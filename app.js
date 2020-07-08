@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const cron = require('cron');
+const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const Repository = require('./models/Repository');
 
@@ -29,31 +29,40 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 
 //Schedule Cron Job
 const octokit = new Octokit();
-cron.job(
+const job = new CronJob(
   process.env.UPDATE_SCHEDULE,
   () => {
-    Repository.deleteMany({}).then((res) => {
-      octokit.repos.listForUser({ username: 'MaheshNat' }).then(({ data }) => {
-        data.forEach((repo) => {
-          const _repo = new Repository({
-            title: repo.name,
-            description: repo.description,
-            language: repo.language,
-            stars: repo.stargazers_count,
-            size: repo.size,
-            lastUpdatedAt: repo.updated_at,
-            createdAt: repo.created_at,
-            link: repo.html_url,
-          });
-          _repo.save();
-        });
-        res.json({ message: 'Updated all github repositories.' });
-      });
-    });
+    console.log('starting cron job...');
+    Repository.deleteMany({})
+      .then((res) => {
+        octokit.repos
+          .listForUser({ username: process.env.GITHUB_USERNAME })
+          .then(({ data }) => {
+            data.forEach((repo) => {
+              const _repo = new Repository({
+                title: repo.name,
+                description: repo.description,
+                language: repo.language,
+                stars: repo.stargazers_count,
+                size: repo.size,
+                lastUpdatedAt: repo.updated_at,
+                createdAt: repo.created_at,
+                link: repo.html_url,
+              });
+              _repo.save();
+            });
+          })
+          .then((res) => console.log('Updated all github repositories.'))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   },
-  undefined,
+  null,
   true,
-  process.env.TIME_ZONE
+  process.env.TIME_ZONE,
+  null,
+  true
 );
+job.start();
 
 app.listen(PORT);
