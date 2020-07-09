@@ -63,8 +63,8 @@ const job = new CronJob(
   true,
   process.env.TIME_ZONE,
   null,
-  false
+  true
 );
-// job.start();
+job.start();
 
 app.listen(PORT);
