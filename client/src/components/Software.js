@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadRepositories } from '../actions/githubActions';
-import { Spinner, OverlayTrigger, Tooltip, Table } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -62,7 +62,7 @@ class Software extends Component {
         </div>
 
         {this.props.repositories ? (
-          <Table responsive hover>
+          <Table responsive hover style={{ marginBottom: '2em' }}>
             <thead>
               <tr>
                 <th
@@ -205,7 +205,15 @@ class Software extends Component {
             </tbody>
           </Table>
         ) : (
-          <Spinner animation="border" variant="light" size="lg" />
+          <div className="row justify-content-center">
+            <div className="col text-center">
+              <div
+                className="spinner-border"
+                style={{ width: '8em', height: '8em' }}
+                role="status"
+              ></div>
+            </div>
+          </div>
         )}
       </div>
     );

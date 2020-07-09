@@ -29,11 +29,11 @@ const ProjectGif = (props) => {
               <div className="col">{props.title}</div>
               {props.demoLink && (
                 <a href={props.demoLink} className="card-link">
-                  <FontAwesomeIcon icon={faLink} size="" />
+                  <FontAwesomeIcon icon={faLink} />
                 </a>
               )}
               <a href={props.githubLink} className="card-link">
-                <FontAwesomeIcon icon={faGithub} size="" />
+                <FontAwesomeIcon icon={faGithub} />
               </a>
               {props.devpostLink && (
                 <a href={props.devpostLink} className="card-link">

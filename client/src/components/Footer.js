@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -33,9 +35,9 @@ export default function Footer() {
             </a>
           </div>
           <div className="col text-center">
-            <a href="http://localhost:3000/contact">
+            <Link to="/contact">
               <FontAwesomeIcon icon={faEnvelope} size="3x" />
-            </a>
+            </Link>
           </div>
           <div className="col text-center">
             <a href="https://www.instagram.com/maheshnatamai/">

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { loadProjects } from '../actions/projectsActions';
 import Project from './Project';
 import ProjectGif from './ProjectGif';
-import { Spinner } from 'react-bootstrap';
 
 class Projects extends Component {
   constructor(props) {
@@ -97,7 +96,15 @@ class Projects extends Component {
             </div>
           ))
         ) : (
-          <Spinner animation="border" variant="light" size="lg" />
+          <div className="row justify-content-center">
+            <div className="col text-center">
+              <div
+                className="spinner-border"
+                style={{ width: '8em', height: '8em' }}
+                role="status"
+              ></div>
+            </div>
+          </div>
         )}
       </div>
     );

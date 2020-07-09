@@ -80,7 +80,11 @@ export default class Contact extends Component {
             <form
               onSubmit={this.handleSubmit}
               className="bg-secondary"
-              style={{ borderRadius: '1em', padding: '2em' }}
+              style={{
+                borderRadius: '1em',
+                padding: '2em',
+                marginBottom: '2em',
+              }}
             >
               <div className="form-group">
                 <label htmlFor="name">Name</label>
