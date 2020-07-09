@@ -196,7 +196,15 @@ class Software extends Component {
                   <td>{new Date(repo.createdAt).toLocaleDateString()}</td>
                   <td>{new Date(repo.lastUpdatedAt).toLocaleDateString()}</td>
                   <td>
-                    <a href={repo.link}>
+                    <a
+                      href={repo.link}
+                      onClick={(e) => {
+                        ReactGa.event({
+                          category: 'Software',
+                          action: `Clicked on ${repo.title} github link.`,
+                        });
+                      }}
+                    >
                       <FontAwesomeIcon icon={faGithub} size="2x" />
                     </a>
                   </td>

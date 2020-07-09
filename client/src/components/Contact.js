@@ -14,6 +14,7 @@ export default class Contact extends Component {
       message: '',
       sending: false,
       sent: false,
+      invalidEmail: false,
     };
   }
 
@@ -22,21 +23,20 @@ export default class Contact extends Component {
   }
 
   handleChange = (e) => {
+    let invalidEmail =
+      this.state.email &&
+      !/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(this.state.email);
     this.setState({
       [e.target.id]: e.target.value,
+      invalidEmail: invalidEmail,
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      sending: true,
-      name: '',
-      email: '',
-      subject: '',
-      reason: 'Casual',
-      message: '',
-      sent: false,
+    ReactGa.event({
+      category: 'Contact',
+      action: `Sent email ${this.state.subject} by ${this.state.name} for ${this.state.reason}`,
     });
     axios
       .post('/contact', {
@@ -50,6 +50,15 @@ export default class Contact extends Component {
         this.setState({ sent: true, sending: false });
       })
       .catch((err) => console.log(err));
+    this.setState({
+      sending: true,
+      name: '',
+      email: '',
+      subject: '',
+      reason: 'Casual',
+      message: '',
+      sent: false,
+    });
   };
 
   render() {
@@ -95,7 +104,7 @@ export default class Contact extends Component {
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="name"
                   onChange={this.handleChange}
                   value={this.state.name}
@@ -105,17 +114,24 @@ export default class Contact extends Component {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className={`form-control ${
+                    this.state.invalidEmail ? 'is-invalid' : ''
+                  }`}
                   id="email"
                   onChange={this.handleChange}
                   value={this.state.email}
                 />
+                {this.state.email && (
+                  <div className="invalid-feedback">
+                    Enter a correct email address.
+                  </div>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="subject">Subject</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="subject"
                   onChange={this.handleChange}
                   value={this.state.subject}
@@ -124,7 +140,7 @@ export default class Contact extends Component {
               <div className="form-group">
                 <label htmlFor="reason">Reason</label>
                 <select
-                  class="form-control"
+                  className="form-control"
                   id="reason"
                   onChange={this.handleChange}
                   value={this.state.reason}
@@ -140,7 +156,7 @@ export default class Contact extends Component {
                 <textarea
                   rows="5"
                   placeholder="..."
-                  class="form-control"
+                  className="form-control"
                   id="message"
                   onChange={this.handleChange}
                   value={this.state.message}
@@ -156,7 +172,8 @@ export default class Contact extends Component {
                       this.state.name &&
                       this.state.message &&
                       this.state.reason &&
-                      this.state.subject
+                      this.state.subject &&
+                      !this.state.invalidEmail
                     )
                       ? 'not-allowed'
                       : 'default',
@@ -167,7 +184,8 @@ export default class Contact extends Component {
                       this.state.name &&
                       this.state.message &&
                       this.state.reason &&
-                      this.state.subject
+                      this.state.subject &&
+                      !this.state.invalidEmail
                     )
                   }
                 >
