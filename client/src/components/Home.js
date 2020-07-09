@@ -4,12 +4,18 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
 
+import ReactGa from 'react-ga';
+
 export default class Home extends Component {
+  componentDidMount() {
+    ReactGa.pageview(window.location.pathname + window.location.search);
+  }
+
   render() {
     return (
       <div>
         <div id="home">
-          <div style={{ marginTop: 290 }}>
+          <div style={{ marginTop: 290, padding: '2em' }} className="bg-dark">
             <h1 className="text-center" style={{ letterSpacing: 15 }}>
               MAHESH NATAMAI
             </h1>
@@ -85,7 +91,7 @@ export default class Home extends Component {
               these topics.
             </p>
             <div className="row justify-content-center">
-              <div className="col-xs-12 col-sm-6">
+              <div className="col-xs-12 col-sm-6 col-lg-4">
                 <h4>Software Development</h4>
                 <ul>
                   <li>Front End: Angular, React (Redux), Bootstrap</li>
@@ -95,7 +101,7 @@ export default class Home extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="col-xs-12 col-sm-6">
+              <div className="col-xs-12 col-sm-6 col-lg-4">
                 <h4>Machine Learning / Data Science</h4>
                 <ul>
                   <li>
@@ -106,6 +112,12 @@ export default class Home extends Component {
                     Concepts: Machine Learning (Linear / Logistic Regression),
                     Deep Learning (Neural Networks, CNNs, RNNs (LSTMs))
                   </li>
+                </ul>
+              </div>
+              <div className="col-xs-12 col-sm-6 col-lg-4">
+                <h4>Robotics</h4>
+                <ul>
+                  <li>FTC Robotics (Java), OpenCV (Java, Python)</li>
                 </ul>
               </div>
             </div>

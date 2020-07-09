@@ -4,6 +4,8 @@ import { loadProjects } from '../actions/projectsActions';
 import Project from './Project';
 import ProjectGif from './ProjectGif';
 
+import ReactGa from 'react-ga';
+
 class Projects extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ class Projects extends Component {
   }
   componentDidMount = () => {
     if (!this.props.projects) this.props.loadProjects();
+    ReactGa.pageview(window.location.pathname + window.location.search);
   };
 
   componentWillReceiveProps = (props) => {

@@ -15,13 +15,19 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
+import ReactGa from 'react-ga';
 import axiosDefaults from 'axios/lib/defaults';
+
 axiosDefaults.baseURL = 'http://mnat.herokuapp.com/api';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class App extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(process.env);
+    if (process.env.NODE_ENV === 'production')
+      ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+  }
 
   render() {
     return (

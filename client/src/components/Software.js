@@ -4,6 +4,7 @@ import { loadRepositories } from '../actions/githubActions';
 import { OverlayTrigger, Tooltip, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import ReactGa from 'react-ga';
 
 class Software extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Software extends Component {
 
   componentDidMount() {
     if (!this.props.repositories) this.props.loadRepositories();
+    ReactGa.pageview(window.location.pathname + window.location.search);
   }
 
   handleSort = (key) => {

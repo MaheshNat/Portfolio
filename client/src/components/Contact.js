@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Alert, Spinner } from 'react-bootstrap';
+import ReactGa from 'react-ga';
 
 export default class Contact extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ export default class Contact extends Component {
       sending: false,
       sent: false,
     };
+  }
+
+  componentDidMount() {
+    ReactGa.pageview(window.location.pathname + window.location.search);
   }
 
   handleChange = (e) => {
