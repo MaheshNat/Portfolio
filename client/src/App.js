@@ -16,7 +16,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 import axiosDefaults from 'axios/lib/defaults';
-axiosDefaults.baseURL = 'http://localhost:8080/api';
+axiosDefaults.baseURL = 'http://mnat.herokuapp.com/api';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
