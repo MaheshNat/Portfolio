@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const Repository = require('./models/Repository');
@@ -21,8 +22,12 @@ app.use('/api/github', githubRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/projects', projectsRouter);
 
-if (process.env.NODE_ENV === 'production')
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 //Connect To Database
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
