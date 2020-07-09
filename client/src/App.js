@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/darkly/bootstrap.min.css';
+import './App.css';
 
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Software from './components/Software';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -26,12 +28,13 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Navigation />
-          <div className="container container-fluid">
+          <div>
             <Route path="/" exact component={Home} />
             <Route path="/projects" component={Projects} />
             <Route path="/software" component={Software} />
             <Route path="/contact" component={Contact} />
           </div>
+          <Footer />
         </BrowserRouter>
       </Provider>
     );

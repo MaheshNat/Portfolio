@@ -8,7 +8,7 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <Navbar bg="dark" variant="dark" expand="sm">
+      <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
         <LinkContainer to="/">
           <Navbar.Brand>Mahesh Natamai</Navbar.Brand>
         </LinkContainer>

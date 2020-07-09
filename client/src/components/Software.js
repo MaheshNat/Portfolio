@@ -42,7 +42,7 @@ class Software extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container container-fluid">
         <div
           className="jumbotron text-center"
           style={{ marginBottom: '2em', marginTop: '2em' }}

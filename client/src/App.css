@@ -1,0 +1,21 @@
+#home {
+  background: url('./assets/images/background-1.jpg') no-repeat center center
+    fixed;
+  filter: contrast(110%);
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+}
+
+.landing-text {
+  color: white;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.landing-text h1 {
+  letter-spacing: 15;
+}
