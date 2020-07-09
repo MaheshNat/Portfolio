@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     from: req.body.from,
     to: process.env.PRIMARY_EMAIL,
     subject: req.body.subject,
-    text: `Reason: ${req.body.reason} | Email: ${req.body.from}\n${req.body.message}`,
+    text: `Reason: ${req.body.reason} | Email: ${req.body.from} | Name: ${req.body.name}\n${req.body.message}`,
   };
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) console.log(err);

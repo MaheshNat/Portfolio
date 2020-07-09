@@ -11,13 +11,15 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const githubRouter = require('./routes/github');
 const contactRouter = require('./routes/contact');
+const projectsRouter = require('./routes/projects');
 
 // Register middleware
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
-app.use('/github', githubRouter);
-app.use('/contact', contactRouter);
+app.use('/api/github', githubRouter);
+app.use('/api/contact', contactRouter);
+app.use('/api/projects', projectsRouter);
 
 if (process.env.NODE_ENV === 'production')
   app.use(express.static('client/build'));
@@ -61,8 +63,8 @@ const job = new CronJob(
   true,
   process.env.TIME_ZONE,
   null,
-  true
+  false
 );
-job.start();
+// job.start();
 
 app.listen(PORT);
