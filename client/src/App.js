@@ -24,12 +24,10 @@ axiosDefaults.baseURL = 'http://mnat.herokuapp.com/api';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-class App extends Component {
-  componentDidMount() {
-    if (process.env.NODE_ENV === 'production')
-      ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
-  }
+if (process.env.NODE_ENV === 'production')
+  ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
 
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
