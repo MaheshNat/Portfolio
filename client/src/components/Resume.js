@@ -15,7 +15,7 @@ export default function Resume() {
       >
         <h1>
           Resume{' '}
-          <a href={`${process.env.REACT_APP_BASE_URL}/resume`}>
+          <a href={'http://mnat.herokuapp.com/api/resume'}>
             <FontAwesomeIcon icon={faDownload} />
           </a>
         </h1>
