@@ -4,6 +4,8 @@ import resume from '../assets/images/Resume.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
+import ReactGa from 'react-ga';
+
 export default function Resume() {
   return (
     <div className="container">
@@ -13,7 +15,15 @@ export default function Resume() {
       >
         <h1>
           Resume{' '}
-          <a href={'http://mnat.herokuapp.com/api/resume'}>
+          <a
+            href={'http://mnat.herokuapp.com/api/resume'}
+            onClick={() => {
+              ReactGa.event({
+                category: 'Resume',
+                action: 'Downloaded resume.',
+              });
+            }}
+          >
             <FontAwesomeIcon icon={faDownload} />
           </a>
         </h1>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleDown, faFile } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -61,7 +61,7 @@ export default class Home extends Component {
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
               </div>
-              <div style={{ marginBottom: '1em' }}>
+              <div style={{ marginBottom: '1em', marginRight: '1em' }}>
                 <Link
                   to="/contact"
                   onClick={(e) => {
@@ -73,6 +73,19 @@ export default class Home extends Component {
                 >
                   <FontAwesomeIcon icon={faEnvelope} size="2x" />
                 </Link>
+              </div>
+              <div style={{ marginBottom: '1em' }}>
+                <a
+                  href="http://mnat.herokuapp.com/api/resume"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Home',
+                      action: 'Clicked Resume icon.',
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faFile} size="2x" />
+                </a>
               </div>
             </div>
             <h1 className="text-center" style={{ letterSpacing: 15 }}>
