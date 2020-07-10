@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import resume from '../assets/images/Resume.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 export default function Resume() {
-  const [pages, setPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
   return (
     <div className="container">
       <div
