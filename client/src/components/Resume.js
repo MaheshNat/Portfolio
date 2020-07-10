@@ -1,12 +1,17 @@
-import React from 'react';
-import resume from '../assets/images/Resume.png';
+import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import {
+  faDownload,
+  faArrowLeft,
+  faArrowRight,
+} from '@fortawesome/free-solid-svg-icons';
 
 import ReactGa from 'react-ga';
 
 export default function Resume() {
+  const pages = 2;
+  const [page, setPage] = useState(1);
   return (
     <div className="container">
       <div
@@ -37,11 +42,42 @@ export default function Resume() {
         </h4>
       </div>
       <div
+        className="text-center row justify-content-center"
+        style={{ marginBottom: '2em', marginTop: '2em' }}
+      >
+        <button
+          className="col-xs-2 btn btn-success"
+          disabled={page === 1}
+          style={{ cursor: page === 1 ? 'not-allowed' : 'default' }}
+          onClick={() => {
+            setPage(page - 1);
+          }}
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <h5
+          className="col-xs-2"
+          style={{ paddingTop: 8, marginLeft: '1em', marginRight: '1em' }}
+        >
+          Page {page} of {pages}
+        </h5>
+        <button
+          className="col-xs-2 btn btn-success"
+          disabled={page === pages}
+          style={{ cursor: page === pages ? 'not-allowed' : 'default' }}
+          onClick={() => {
+            setPage(page + 1);
+          }}
+        >
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
+      </div>
+      <div
         className="row justify-content-center"
         style={{ marginBottom: '2em' }}
       >
         <img
-          src={resume}
+          src={require(`../assets/images/Resume/Resume-${page}.png`)}
           alt="Resume"
           className="img-responsive col"
           style={{ maxWidth: 800 }}
