@@ -20,84 +20,72 @@ export default class Home extends Component {
       <div>
         <div id="home">
           <div style={{ marginTop: 290, padding: '2em' }} className="bg-dark">
-            <span
-              style={{
-                display: 'table',
-                position: 'absolute',
-                left: 0,
-              }}
-            >
-              <div className="col">
-                <div style={{ marginBottom: '1em' }}>
-                  <a
-                    href="https://www.instagram.com/maheshnatamai/"
-                    onClick={(e) => {
-                      ReactGa.event({
-                        category: 'Home',
-                        action: 'Clicked Instagram icon.',
-                      });
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faInstagram} size="2x" />
-                  </a>
-                </div>
-
-                <div style={{ marginBottom: '1em' }}>
-                  <a
-                    href="https://github.com/MaheshNat"
-                    onClick={(e) => {
-                      ReactGa.event({
-                        category: 'Home',
-                        action: 'Clicked Github icon.',
-                      });
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faGithub} size="2x" />
-                  </a>
-                </div>
-                <div style={{ marginBottom: '1em' }}>
-                  <a
-                    href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
-                    onClick={(e) => {
-                      ReactGa.event({
-                        category: 'Home',
-                        action: 'Clicked LinkedIn icon.',
-                      });
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faLinkedin} size="2x" />
-                  </a>
-                </div>
-                <div>
-                  <Link
-                    to="/contact"
-                    onClick={(e) => {
-                      ReactGa.event({
-                        category: 'Home',
-                        action: 'Clicked Email icon.',
-                      });
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faEnvelope} size="2x" />
-                  </Link>
-                </div>
+            <div className="row justify-content-center">
+              <div style={{ marginBottom: '1em', marginRight: '1em' }}>
+                <a
+                  href="https://www.instagram.com/maheshnatamai/"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Home',
+                      action: 'Clicked Instagram icon.',
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </a>
               </div>
-            </span>
+
+              <div style={{ marginBottom: '1em', marginRight: '1em' }}>
+                <a
+                  href="https://github.com/MaheshNat"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Home',
+                      action: 'Clicked Github icon.',
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faGithub} size="2x" />
+                </a>
+              </div>
+              <div style={{ marginBottom: '1em', marginRight: '1em' }}>
+                <a
+                  href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Home',
+                      action: 'Clicked LinkedIn icon.',
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </a>
+              </div>
+              <div style={{ marginBottom: '1em' }}>
+                <Link
+                  to="/contact"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Home',
+                      action: 'Clicked Email icon.',
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faEnvelope} size="2x" />
+                </Link>
+              </div>
+            </div>
             <h1 className="text-center" style={{ letterSpacing: 15 }}>
               MAHESH NATAMAI
             </h1>
-            <h4 className="text-center">
+            <h4 className="text-center" style={{ marginBottom: '1em' }}>
               High school junior self-learning{' '}
               <span className="text-success">software engineering</span>,{' '}
               <span className="text-success">machine learning</span>, and{' '}
               <span className="text-success">data science</span>.
             </h4>
             <div className="row justify-content-center text-center">
-              <Link
-                to="/projects"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
+              <Link to="/projects" className="col-xs-12 col-md-2">
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -105,11 +93,7 @@ export default class Home extends Component {
                   Projects
                 </button>
               </Link>
-              <Link
-                to="/resume"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
+              <Link to="/resume" className="col-xs-12 col-md-2">
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -117,11 +101,7 @@ export default class Home extends Component {
                   Resume
                 </button>
               </Link>
-              <Link
-                to="/software"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
+              <Link to="/software" className="col-xs-12 col-md-2">
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -129,11 +109,7 @@ export default class Home extends Component {
                   Software
                 </button>
               </Link>
-              <Link
-                to="/contact"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
+              <Link to="/contact" className="col-xs-12 col-md-2">
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -144,7 +120,7 @@ export default class Home extends Component {
             </div>
           </div>
           <div
-            style={{ marginTop: 300, marginBottom: 41 }}
+            style={{ marginTop: 250, marginBottom: 20 }}
             className="text-center"
           >
             <h2>Read More</h2>
