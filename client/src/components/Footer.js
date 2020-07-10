@@ -21,8 +21,10 @@ export default function Footer() {
           className="row justify-content-center"
           style={{ marginBottom: '2em' }}
         >
-          <div className="col-xs-12">
-            <h3 style={{ letterSpacing: 10 }}>STAY CONNECTED</h3>
+          <div className="col">
+            <h3 style={{ letterSpacing: 10 }} className="text-center">
+              STAY CONNECTED
+            </h3>
           </div>
         </div>
         <div className="row justify-content-center">

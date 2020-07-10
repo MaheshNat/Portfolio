@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import ReactGa from 'react-ga';
 
@@ -16,6 +20,69 @@ export default class Home extends Component {
       <div>
         <div id="home">
           <div style={{ marginTop: 290, padding: '2em' }} className="bg-dark">
+            <span
+              style={{
+                display: 'table',
+                position: 'absolute',
+                left: 0,
+              }}
+            >
+              <div className="col">
+                <div style={{ marginBottom: '1em' }}>
+                  <a
+                    href="https://www.instagram.com/maheshnatamai/"
+                    onClick={(e) => {
+                      ReactGa.event({
+                        category: 'Home',
+                        action: 'Clicked Instagram icon.',
+                      });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faInstagram} size="2x" />
+                  </a>
+                </div>
+
+                <div style={{ marginBottom: '1em' }}>
+                  <a
+                    href="https://github.com/MaheshNat"
+                    onClick={(e) => {
+                      ReactGa.event({
+                        category: 'Home',
+                        action: 'Clicked Github icon.',
+                      });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faGithub} size="2x" />
+                  </a>
+                </div>
+                <div style={{ marginBottom: '1em' }}>
+                  <a
+                    href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
+                    onClick={(e) => {
+                      ReactGa.event({
+                        category: 'Home',
+                        action: 'Clicked LinkedIn icon.',
+                      });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                  </a>
+                </div>
+                <div>
+                  <Link
+                    to="/contact"
+                    onClick={(e) => {
+                      ReactGa.event({
+                        category: 'Home',
+                        action: 'Clicked Email icon.',
+                      });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faEnvelope} size="2x" />
+                  </Link>
+                </div>
+              </div>
+            </span>
             <h1 className="text-center" style={{ letterSpacing: 15 }}>
               MAHESH NATAMAI
             </h1>
@@ -36,6 +103,18 @@ export default class Home extends Component {
                   className="btn btn-outline-success btn-lg"
                 >
                   Projects
+                </button>
+              </Link>
+              <Link
+                to="/resume"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Resume
                 </button>
               </Link>
               <Link
@@ -77,10 +156,7 @@ export default class Home extends Component {
           style={{ paddingTop: 100, paddingBottom: 100 }}
         >
           <div className="container">
-            <h2
-              className=""
-              style={{ margin: 0, letterSpacing: 15, marginBottom: '1em' }}
-            >
+            <h2 style={{ margin: 0, letterSpacing: 15, marginBottom: '1em' }}>
               ABOUT ME
             </h2>
             <p style={{ fontSize: 20, marginBottom: '1em' }}>
@@ -92,7 +168,7 @@ export default class Home extends Component {
             </p>
             <div className="row justify-content-center">
               <div className="col-xs-12 col-sm-6 col-lg-4">
-                <h4>Software Development</h4>
+                <h4>Web Development</h4>
                 <ul>
                   <li>Front End: Angular, React (Redux), Bootstrap</li>
                   <li>

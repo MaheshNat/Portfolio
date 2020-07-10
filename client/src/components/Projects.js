@@ -103,7 +103,7 @@ class Projects extends Component {
             <div className="col text-center">
               <div
                 className="spinner-border"
-                style={{ width: '8em', height: '8em' }}
+                style={{ width: '8em', height: '8em', marginBottom: '2em' }}
                 role="status"
               ></div>
             </div>

@@ -18,6 +18,9 @@ class Navigation extends Component {
             <LinkContainer to="/projects">
               <Nav.Link>Projects</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/resume">
+              <Nav.Link>Resume</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/software">
               <Nav.Link>Software</Nav.Link>
             </LinkContainer>

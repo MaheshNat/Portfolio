@@ -22,6 +22,10 @@ app.use('/api/github', githubRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/projects', projectsRouter);
 
+app.use('/api/resume', (req, res) => {
+  res.download('./assets/mahesh-natamai-resume.pdf');
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
