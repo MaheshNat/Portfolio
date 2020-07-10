@@ -26,7 +26,6 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class App extends Component {
   componentDidMount() {
-    console.log(process.env);
     if (process.env.NODE_ENV === 'production') {
       process.env.REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL.substring(
         1,
@@ -34,6 +33,7 @@ class App extends Component {
       );
       ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
     }
+    console.log(process.env);
   }
 
   render() {
