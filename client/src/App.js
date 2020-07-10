@@ -26,8 +26,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class App extends Component {
   componentDidMount() {
-    // if (process.env.NODE_ENV === 'production')
-    ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+    console.log(process.env);
+    if (process.env.NODE_ENV === 'production')
+      ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
   }
 
   render() {
