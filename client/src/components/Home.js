@@ -85,7 +85,11 @@ export default class Home extends Component {
               <span className="text-success">data science</span>.
             </h4>
             <div className="row justify-content-center text-center">
-              <Link to="/projects" className="col-xs-12 col-md-2">
+              <Link
+                to="/projects"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -93,7 +97,11 @@ export default class Home extends Component {
                   Projects
                 </button>
               </Link>
-              <Link to="/resume" className="col-xs-12 col-md-2">
+              <Link
+                to="/resume"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -101,7 +109,11 @@ export default class Home extends Component {
                   Resume
                 </button>
               </Link>
-              <Link to="/software" className="col-xs-12 col-md-2">
+              <Link
+                to="/software"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
@@ -109,7 +121,11 @@ export default class Home extends Component {
                   Software
                 </button>
               </Link>
-              <Link to="/contact" className="col-xs-12 col-md-2">
+              <Link
+                to="/contact"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
                 <button
                   type="button"
                   className="btn btn-outline-success btn-lg"
