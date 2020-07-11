@@ -21,7 +21,11 @@ const Project = (props) => (
           </span>
         ))}
       </h6>
-      <p className="card-text">{props.description}</p>
+      <ul>
+        {props.description.split('. ').map((sentence) => (
+          <li key={sentence}>{sentence}</li>
+        ))}
+      </ul>
       <h5 className="card-title">Links</h5>
       <hr />
       <div
