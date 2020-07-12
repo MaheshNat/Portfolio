@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleDown, faFile } from '@fortawesome/free-solid-svg-icons';
@@ -11,15 +12,46 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import ReactGa from 'react-ga';
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: 0, height: 0 };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.main = React.createRef();
+  }
+
   componentDidMount() {
     ReactGa.pageview(window.location.pathname + window.location.search);
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {
     return (
       <div>
         <div id="home">
-          <div style={{ marginTop: 290, padding: '2em' }} className="bg-dark">
+          <div
+            style={{
+              marginTop:
+                (this.state.height -
+                  (70 +
+                    101 +
+                    (this.main.current !== null
+                      ? this.main.current.clientHeight
+                      : 0))) /
+                2,
+              padding: '2em',
+            }}
+            className="bg-dark"
+            ref={this.main}
+          >
             <div className="row justify-content-center">
               <div style={{ marginBottom: '1em', marginRight: '1em' }}>
                 <a
@@ -97,66 +129,36 @@ export default class Home extends Component {
               <span className="text-success">machine learning</span>, and{' '}
               <span className="text-success">data science</span>.
             </h4>
-            <div className="row justify-content-center text-center">
-              <Link
-                to="/projects"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Projects
-                </button>
-              </Link>
-              <Link
-                to="/resume"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Resume
-                </button>
-              </Link>
-              <Link
-                to="/software"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Software
-                </button>
-              </Link>
-              <Link
-                to="/contact"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
-              >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Contact
-                </button>
-              </Link>
-            </div>
           </div>
           <div
-            style={{ marginTop: 250, marginBottom: 20 }}
+            style={{
+              marginTop:
+                (this.state.height -
+                  (70 +
+                    101 +
+                    (this.main.current !== null
+                      ? this.main.current.clientHeight
+                      : 0))) /
+                2,
+              marginBottom: 2,
+            }}
             className="text-center"
           >
-            <h2>Read More</h2>
-            <FontAwesomeIcon icon={faAngleDoubleDown} size="3x" />
+            <ScrollLink
+              activeClass="active"
+              to="about"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              <h2>Read More</h2>
+              <FontAwesomeIcon icon={faAngleDoubleDown} size="3x" />
+            </ScrollLink>
           </div>
         </div>
         <div
+          id="about"
           className="bg-dark"
           style={{ paddingTop: 100, paddingBottom: 100 }}
         >
