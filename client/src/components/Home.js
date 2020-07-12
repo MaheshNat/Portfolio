@@ -126,7 +126,8 @@ export default class Home extends Component {
             <h4 className="text-center" style={{ marginBottom: '1em' }}>
               High school junior self-learning{' '}
               <span className="text-success">software engineering</span>,{' '}
-              <span className="text-success">machine learning</span>, and{' '}
+              <span className="text-success">machine learning</span>,{' '}
+              <span className="text-success">robotics</span>, and{' '}
               <span className="text-success">data science</span>.
             </h4>
           </div>
