@@ -130,6 +130,56 @@ export default class Home extends Component {
               <span className="text-success">robotics</span>, and{' '}
               <span className="text-success">data science</span>.
             </h4>
+            <div className="row justify-content-center text-center">
+              <Link
+                to="/projects"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Projects
+                </button>
+              </Link>
+              <Link
+                to="/resume"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Resume
+                </button>
+              </Link>
+              <Link
+                to="/software"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Software
+                </button>
+              </Link>
+              <Link
+                to="/contact"
+                className="col-xs-12 col-md-2"
+                style={{ marginBottom: '1em' }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Contact
+                </button>
+              </Link>
+            </div>
           </div>
           <div
             style={{
