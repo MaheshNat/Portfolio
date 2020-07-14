@@ -43,7 +43,7 @@ const octokit = new Octokit();
 const awakeJob = new CronJob(
   process.env.AWAKE_SCHEDULE,
   () => {
-    console.log(`awake update at ${Date.now}`);
+    console.log(`awake update at ${Date.now()}`);
   },
   null,
   true,
