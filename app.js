@@ -40,6 +40,19 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 
 //Schedule Cron Job
 const octokit = new Octokit();
+const awakeJob = new CronJob(
+  process.env.AWAKE_SCHEDULE,
+  () => {
+    console.log(`awake update at ${Date.now}`);
+  },
+  null,
+  true,
+  process.env.TIME_ZONE,
+  null,
+  true
+);
+awakeJob.start();
+
 const job = new CronJob(
   process.env.UPDATE_SCHEDULE,
   () => {
