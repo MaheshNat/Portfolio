@@ -78,6 +78,8 @@ class Projects extends Component {
                   githubLink={project.githubLink}
                   languages={project.languages}
                   title={project.title}
+                  startDate={project.startDate}
+                  endDate={project.endDate}
                 />
               </div>
               <div className="col-xs-12 col-lg-6">

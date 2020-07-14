@@ -8,7 +8,15 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 const Project = (props) => (
   <div className="card">
-    <h4 className="card-header">{props.title}</h4>
+    <h3 className="card-header">
+      {props.title}
+      <p className="text-muted" style={{ fontSize: 20 }}>
+        {new Date(props.startDate).toDateString()} -{' '}
+        {new Date(props.endDate).toDateString() === 'Invalid Date'
+          ? 'Present'
+          : new Date(props.endDate).toDateString()}
+      </p>
+    </h3>
     <div className="card-body">
       <h6 className="card-subtitle mb-2 text-muted">
         {props.languages.map((language) => (
