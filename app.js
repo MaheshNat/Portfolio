@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios').default;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -26,6 +27,10 @@ app.use('/api/resume', (req, res) => {
   res.download('./assets/mahesh-natamai-resume.pdf');
 });
 
+app.use('/api/ping', (req, res) => {
+  res.send(`Ping ${Date.now()}`);
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
@@ -41,9 +46,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 //Schedule Cron Job
 const octokit = new Octokit();
 const awakeJob = new CronJob(
-  process.env.AWAKE_SCHEDULE,
+  process.env.PING_SCHEDULE,
   () => {
-    console.log(`awake update at ${Date.now()}`);
+    axios.get('http://mnat.herokuapp.com/api/ping').then((res) => {});
   },
   null,
   true,
