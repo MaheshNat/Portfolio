@@ -27,10 +27,6 @@ app.use('/api/resume', (req, res) => {
   res.download('./assets/mahesh-natamai-resume.pdf');
 });
 
-app.use('/api/ping', (req, res) => {
-  res.send(`Ping ${Date.now()}`);
-});
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
@@ -45,19 +41,6 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 
 //Schedule Cron Job
 const octokit = new Octokit();
-const awakeJob = new CronJob(
-  process.env.PING_SCHEDULE,
-  () => {
-    axios.get('http://mnat.herokuapp.com/api/ping').then((res) => {});
-  },
-  null,
-  true,
-  process.env.TIME_ZONE,
-  null,
-  true
-);
-awakeJob.start();
-
 const job = new CronJob(
   process.env.UPDATE_SCHEDULE,
   () => {
