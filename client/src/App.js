@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Resume from './components/Resume';
 import Error from './components/Error';
+import Podcast from './components/Podcast';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -39,6 +40,7 @@ class App extends Component {
             <Route path="/resume" component={Resume} />
             <Route path="/software" component={Software} />
             <Route path="/contact" component={Contact} />
+            <Route path="/podcast" component={Podcast} />
             <Route component={Error} />
           </Switch>
           <Footer />
