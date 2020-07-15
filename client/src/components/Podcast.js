@@ -79,7 +79,7 @@ export default function Resume() {
           <span className="text-success">Raghav Gangatirkar</span>, where we
           discuss the state of the current{' '}
           <span className="text-success">American economy</span>,{' '}
-          <span className="text-success">macroeconomic trends</span>, and other
+          <span className="text-success">macroeconomic trends</span>, and other{' '}
           <span className="text-success">finance</span> related topics.
         </h4>
       </div>
