@@ -10,4 +10,4 @@ const ProjectSchema = mongoose.Schema({
   creators: { type: Array, default: ['Mahesh Natamai'] },
 });
 
-module.exports = mongoose.model('Projects', ProjectSchema);
+module.exports = mongoose.model('Project', ProjectSchema);

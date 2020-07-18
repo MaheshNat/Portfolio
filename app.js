@@ -5,12 +5,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
+const YouTube = require('simple-youtube-api');
 const Repository = require('./models/Repository');
+const Episode = require('./models/Episode');
 
 const PORT = process.env.PORT || 8080;
 
 const app = express();
-const githubRouter = require('./routes/github');
 const contactRouter = require('./routes/contact');
 const projectsRouter = require('./routes/projects');
 
@@ -18,9 +19,18 @@ const projectsRouter = require('./routes/projects');
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
-app.use('/api/github', githubRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/episodes', (req, res) => {
+  Episode.find({}).then((episodes) => {
+    res.json(episodes);
+  });
+});
+app.use('/api/github', (req, res) => {
+  Repository.find({}).then((repos) => {
+    res.json(repos);
+  });
+});
 
 app.use('/api/resume', (req, res) => {
   res.download('./assets/mahesh-natamai-resume.pdf');
@@ -38,10 +48,43 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
   console.log('mongoDB Connected');
 });
 
-//Schedule Cron Job
+//Schedule Cron Jobs
+const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
+const youtubeJob = new CronJob(
+  process.env.YOUTUBE_UPDATE_SCHEDULE,
+  () => {
+    console.log('starting cron job...');
+    Episode.deleteMany({})
+      .then((res) => {
+        youtube
+          .searchVideos('The Dogs Of Dalal Street', process.env.VIDEOS)
+          .then((videos) =>
+            videos
+              .filter((video) => video.channel.id === process.env.CHANNEL_ID)
+              .forEach((episode) => {
+                const _episode = new Episode({
+                  title: episode.title,
+                  description: episode.description,
+                  url: episode.url,
+                  publishedAt: episode.publishedAt,
+                });
+                _episode.save();
+              })
+          );
+      })
+      .catch((err) => console.log(err));
+  },
+  null,
+  true,
+  process.env.TIME_ZONE,
+  null,
+  true
+);
+youtubeJob.start();
+
 const octokit = new Octokit();
-const job = new CronJob(
-  process.env.UPDATE_SCHEDULE,
+const githubJob = new CronJob(
+  process.env.GITHUB_UPDATE_SCHEDULE,
   () => {
     console.log('starting cron job...');
     Repository.deleteMany({})
@@ -74,6 +117,6 @@ const job = new CronJob(
   null,
   true
 );
-job.start();
+githubJob.start();
 
 app.listen(PORT);

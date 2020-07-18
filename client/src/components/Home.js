@@ -153,8 +153,12 @@ export default class Home extends Component {
               offset={-70}
               duration={500}
             >
-              <h2>Read More</h2>
-              <FontAwesomeIcon icon={faAngleDoubleDown} size="3x" />
+              <h2 style={{ cursor: 'pointer' }}>Read More</h2>
+              <FontAwesomeIcon
+                icon={faAngleDoubleDown}
+                size="3x"
+                style={{ cursor: 'pointer' }}
+              />
             </ScrollLink>
           </div>
         </div>
