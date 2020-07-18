@@ -144,27 +144,6 @@ class Podcast extends Component {
             other <span className="text-success">finance</span> related topics.
           </h4>
         </div>
-        <div
-          className="jumbotron text-center"
-          style={{ marginBottom: '2em', marginTop: '2em', padding: '2em' }}
-        >
-          <h1>Episodes</h1>
-          <h3 style={{ marginBottom: '0.5em' }}>Queried using Youtube API</h3>
-          <ScrollLink
-            activeClass="active"
-            to="episode"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            <FontAwesomeIcon
-              icon={faAngleDoubleDown}
-              size="3x"
-              style={{ cursor: 'pointer' }}
-            />
-          </ScrollLink>
-        </div>
         <div id="episode">
           {this.props.episodes ? (
             this.props.episodes.map((episode) => (
