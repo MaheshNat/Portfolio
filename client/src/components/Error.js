@@ -42,6 +42,15 @@ export default function Error() {
             </button>
           </Link>
           <Link
+            to="/podcast"
+            className="col-xs-12 col-md-2"
+            style={{ marginBottom: '1em' }}
+          >
+            <button type="button" className="btn btn-outline-success btn-lg">
+              Podcast
+            </button>
+          </Link>
+          <Link
             to="/contact"
             className="col-xs-12 col-md-2"
             style={{ marginBottom: '1em' }}
