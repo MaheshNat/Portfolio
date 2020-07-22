@@ -53,15 +53,16 @@ const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
 const youtubeJob = new CronJob(
   process.env.YOUTUBE_UPDATE_SCHEDULE,
   () => {
-    console.log('starting cron job...');
+    console.log('starting youtube cron job...');
     Episode.deleteMany({})
       .then((res) => {
         youtube
-          .searchVideos('The Dogs Of Dalal Street', process.env.VIDEOS)
-          .then((videos) =>
+          .searchVideos('The Dogs Of Dalal Street Podcast', process.env.VIDEOS)
+          .then((videos) => {
             videos
               .filter((video) => video.channel.id === process.env.CHANNEL_ID)
               .forEach((episode) => {
+                console.log(episode);
                 const _episode = new Episode({
                   title: episode.title,
                   description: episode.description,
@@ -69,8 +70,8 @@ const youtubeJob = new CronJob(
                   publishedAt: episode.publishedAt,
                 });
                 _episode.save();
-              })
-          );
+              });
+          });
       })
       .catch((err) => console.log(err));
   },
@@ -86,7 +87,7 @@ const octokit = new Octokit();
 const githubJob = new CronJob(
   process.env.GITHUB_UPDATE_SCHEDULE,
   () => {
-    console.log('starting cron job...');
+    console.log('starting github cron job...');
     Repository.deleteMany({})
       .then((res) => {
         octokit.repos

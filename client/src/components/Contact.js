@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Alert, Spinner } from 'react-bootstrap';
 import ReactGa from 'react-ga';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 export default class Contact extends Component {
   constructor(props) {
     super(props);
@@ -66,9 +69,23 @@ export default class Contact extends Component {
       <div className="container container-fluid">
         <div
           className="jumbotron text-center"
-          style={{ marginBottom: '2em', marginTop: '2em' }}
+          style={{ marginBottom: '1em', marginTop: '2em' }}
         >
-          <h1>Send me an email.</h1>
+          <h1>
+            Send me an email.{' '}
+            <a
+              href="mailto:maheshkumar.natamai@gmail.com"
+              target="_blank"
+              onClick={(e) => {
+                ReactGa.event({
+                  category: 'Home',
+                  action: 'Clicked Email icon.',
+                });
+              }}
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+          </h1>
           <h4>
             Reach out to me through email for{' '}
             <span className="text-success">casual talk</span>,{' '}
@@ -77,6 +94,16 @@ export default class Contact extends Component {
             <span className="text-success">questions / ideas</span>, or{' '}
             <span className="text-success">other </span>reasons.
           </h4>
+        </div>
+        <div
+          className="row justify-content-cent"
+          style={{ marginBottom: '1em' }}
+        >
+          <div className="col text-center">
+            <h4 style={{ fontStyle: 'italic', letterSpacing: 2.5 }}>
+              maheshkumar.natamai@gmail.com
+            </h4>
+          </div>
         </div>
         <div className="row justify-content-center">
           <div className="col" style={{ maxWidth: '40em' }}>

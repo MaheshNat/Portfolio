@@ -56,6 +56,7 @@ export default class Home extends Component {
               <div style={{ marginBottom: '1em', marginRight: '1em' }}>
                 <a
                   href="https://www.instagram.com/maheshnatamai/"
+                  target="_blank"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -70,6 +71,7 @@ export default class Home extends Component {
               <div style={{ marginBottom: '1em', marginRight: '1em' }}>
                 <a
                   href="https://github.com/MaheshNat"
+                  target="_blank"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -83,6 +85,7 @@ export default class Home extends Component {
               <div style={{ marginBottom: '1em', marginRight: '1em' }}>
                 <a
                   href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
+                  target="_blank"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -94,8 +97,9 @@ export default class Home extends Component {
                 </a>
               </div>
               <div style={{ marginBottom: '1em', marginRight: '1em' }}>
-                <Link
-                  to="/contact"
+                <a
+                  href="mailto:maheshkumar.natamai@gmail.com"
+                  target="_blank"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -104,7 +108,7 @@ export default class Home extends Component {
                   }}
                 >
                   <FontAwesomeIcon icon={faEnvelope} size="2x" />
-                </Link>
+                </a>
               </div>
               <div style={{ marginBottom: '1em' }}>
                 <a

@@ -30,35 +30,10 @@ class Podcast extends Component {
         >
           <h1>The Dogs Of Dalal Street Podcast</h1>
           <div className="row justify-content-center">
-            {/* <div style={{ marginBottom: '1em', marginRight: '1em' }}>
-            <a
-              href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
-              onClick={(e) => {
-                ReactGa.event({
-                  category: 'Podcast',
-                  action: 'Clicked LinkedIn icon.',
-                });
-              }}
-            >
-              <FontAwesomeIcon icon={faLinkedin} size="3x" />
-            </a>
-          </div> */}
-            {/* <div style={{ marginBottom: '1em', marginRight: '1em' }}>
-            <a
-              href="maheshkumar.natamai@gmail.com"
-              onClick={(e) => {
-                ReactGa.event({
-                  category: 'Home',
-                  action: 'Clicked Email icon.',
-                });
-              }}
-            >
-              <FontAwesomeIcon icon={faEnvelope} size="3x" />
-            </a>
-          </div> */}
             <div style={{ marginBottom: '1em', marginRight: '1em' }}>
               <a
                 href="https://open.spotify.com/show/23ZvReiQvkCiFh80aFmkAN"
+                target="_blank"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Podcast',
@@ -72,6 +47,7 @@ class Podcast extends Component {
             <div style={{ marginBottom: '1em', marginRight: '1em' }}>
               <a
                 href="https://www.youtube.com/channel/UCFAndC3eZ2XKZ6rvEVgPIPg"
+                target="_blank"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Podcast',
@@ -85,6 +61,7 @@ class Podcast extends Component {
             <div style={{ marginBottom: '1em', marginRight: '1em' }}>
               <a
                 href="https://anchor.fm/dalal-street-podcast"
+                target="_blank"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Podcast',
@@ -98,6 +75,7 @@ class Podcast extends Component {
             <div style={{ marginBottom: '1em', marginRight: '1em' }}>
               <a
                 href="https://www.instagram.com/dalalstreetpodcast/"
+                target="_blank"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Podcast',
@@ -111,6 +89,7 @@ class Podcast extends Component {
             <div style={{ marginBottom: '1em', marginRight: '1em' }}>
               <a
                 href="https://www.facebook.com/The-Dogs-of-Dalal-Street-100141311786197/?__tn__=kC-R&eid=ARA45lPHSAmDdj3A-P5EfkvkMYv_k-9SJoaVaQYkkusZemhoAqbdLLcSZe1K81Qr_Nz-tbfRQABa3hPI&hc_ref=ARSgES4mA5ScSjjkDwG7Pxykv_9EkwGbpI_LdUIqW8ubBByd4vW526AtpNnsZf9Jri8&fref=nf&__xts__[0]=68.ARCv8mm0X8jEe_Rq2eQr35IQOQ3gz8_AHtaWEohJ6SyThxTCKLJH53zsuD1O_iozrODoI3NWhCfGmmozr9ZqGcGzAJjk7o0mKkqSeZYn12wskZtT73JgwKMzh1wQ2FDvPCNr0kM4ghJRh7pBxt_0N__0eqlcgONK4kIVnAQWY3LtTv-aMzE33YUq0Z-Orce3b_FoxCxpvI4VQLmHfSHJgfsghfKiibyWJiO6eritRZSpAFeqmQ1DYOUukLpokcWmGvX7ZIXB6_hYYsB8uDGxJ0BX9jgmqbkFmz1y4ztbgwPajGyg2pYL6mKon7FovtNxYECNqs-fb3JvxbJpXtFPYsnXKpDq3Kaf6f-xWWdVSra1fHKmOuEHwC4"
+                target="_blank"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Podcast',

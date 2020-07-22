@@ -198,6 +198,7 @@ class Software extends Component {
                   <td>
                     <a
                       href={repo.link}
+                      target="_blank"
                       onClick={(e) => {
                         ReactGa.event({
                           category: 'Software',

@@ -31,6 +31,7 @@ export default function Footer() {
           <div className="col text-center">
             <a
               href="https://github.com/MaheshNat"
+              target="_blank"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',
@@ -44,6 +45,7 @@ export default function Footer() {
           <div className="col text-center">
             <a
               href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
+              target="_blank"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',
@@ -55,8 +57,9 @@ export default function Footer() {
             </a>
           </div>
           <div className="col text-center">
-            <Link
-              to="/contact"
+            <a
+              target="_blank"
+              href="mailto:maheshkumar.natamai@gmail.com"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',
@@ -65,18 +68,19 @@ export default function Footer() {
               }}
             >
               <FontAwesomeIcon icon={faEnvelope} size="3x" />
-            </Link>
+            </a>
           </div>
-          <div
-            className="col text-center"
-            onClick={(e) => {
-              ReactGa.event({
-                category: 'Footer',
-                action: 'Clicked Instagram icon.',
-              });
-            }}
-          >
-            <a href="https://www.instagram.com/maheshnatamai/">
+          <div className="col text-center">
+            <a
+              href="https://www.instagram.com/maheshnatamai/"
+              target="_blank"
+              onClick={(e) => {
+                ReactGa.event({
+                  category: 'Footer',
+                  action: 'Clicked Instagram icon.',
+                });
+              }}
+            >
               <FontAwesomeIcon icon={faInstagram} size="3x" />
             </a>
           </div>
