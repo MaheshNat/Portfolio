@@ -44,6 +44,8 @@ const Project = (props) => {
           {props.demoLink && (
             <a
               href={props.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="card-link col"
               onClick={(e) => {
                 ReactGa.event({
@@ -57,6 +59,8 @@ const Project = (props) => {
           )}
           <a
             href={props.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="card-link col"
             onClick={(e) => {
               ReactGa.event({
@@ -70,6 +74,8 @@ const Project = (props) => {
           {props.devpostLink && (
             <a
               href={props.devpostLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="card-link col"
               onClick={(e) => {
                 ReactGa.event({

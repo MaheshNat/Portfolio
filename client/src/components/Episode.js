@@ -13,6 +13,8 @@ const Episode = (props) => (
         {new Date(props.publishedAt).toDateString()}{' '}
         <a
           href={props.url}
+          target="_blank"
+          rel="noopener noreferrer"
           className="card-link"
           onClick={(e) => {
             ReactGa.event({
