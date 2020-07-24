@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
+
+import WAVES from 'vanta/dist/vanta.waves.min';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleDown, faFile } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,7 @@ export default class Home extends Component {
     super(props);
     this.state = { width: 0, height: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.home = React.createRef();
     this.main = React.createRef();
   }
 
@@ -23,7 +25,23 @@ export default class Home extends Component {
     ReactGa.pageview(window.location.pathname + window.location.search);
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    WAVES({
+      el: this.home.current,
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x886f,
+      shininess: 30.0,
+      waveHeight: 13.5,
+      waveSpeed: 1.1,
+      zoom: 0.8,
+    });
   }
+
+  componentWillMount() {}
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
@@ -36,7 +54,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div id="home">
+        <div id="home" ref={this.home}>
           <div
             style={{
               marginTop:
@@ -57,6 +75,7 @@ export default class Home extends Component {
                 <a
                   href="https://www.instagram.com/maheshnatamai/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -72,6 +91,7 @@ export default class Home extends Component {
                 <a
                   href="https://github.com/MaheshNat"
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -86,6 +106,7 @@ export default class Home extends Component {
                 <a
                   href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
@@ -100,6 +121,7 @@ export default class Home extends Component {
                 <a
                   href="mailto:maheshkumar.natamai@gmail.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',

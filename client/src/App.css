@@ -1,7 +1,4 @@
 #home {
-  background: url('./assets/images/background-1.jpg') no-repeat center center
-    fixed;
-  filter: contrast(110%);
   display: table;
   height: 100%;
   width: 100%;

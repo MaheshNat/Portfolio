@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,6 +30,7 @@ export default function Footer() {
             <a
               href="https://github.com/MaheshNat"
               target="_blank"
+              rel="noopener noreferrer"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',
@@ -46,6 +45,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/mahesh-natamai-b17683188/"
               target="_blank"
+              rel="noopener noreferrer"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',
@@ -59,6 +59,7 @@ export default function Footer() {
           <div className="col text-center">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="mailto:maheshkumar.natamai@gmail.com"
               onClick={(e) => {
                 ReactGa.event({
@@ -74,6 +75,7 @@ export default function Footer() {
             <a
               href="https://www.instagram.com/maheshnatamai/"
               target="_blank"
+              rel="noopener noreferrer"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Footer',

@@ -76,6 +76,7 @@ export default class Contact extends Component {
             <a
               href="mailto:maheshkumar.natamai@gmail.com"
               target="_blank"
+              rel="noopener noreferrer"
               onClick={(e) => {
                 ReactGa.event({
                   category: 'Home',
