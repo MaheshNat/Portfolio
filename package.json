@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@octokit/rest": "^18.0.0",
     "btoa": "^1.2.1",
     "cors": "^2.8.5",
