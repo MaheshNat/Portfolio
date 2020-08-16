@@ -187,9 +187,11 @@ class Software extends Component {
                     )}
                   >
                     <td>
-                      {repo.description.length > 39
-                        ? repo.description.substring(0, 39) + '...'
-                        : repo.description}
+                      {repo.description
+                        ? repo.description.length > 39
+                          ? repo.description.substring(0, 39) + '...'
+                          : repo.description
+                        : 'No description provided.'}
                     </td>
                   </OverlayTrigger>
                   <td>{repo.language}</td>
