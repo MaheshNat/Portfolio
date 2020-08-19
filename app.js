@@ -3,7 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
-import sslRedirect from ('heroku-ssl-redirect');
+import sslRedirect from 'heroku-ssl-redirect';
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
