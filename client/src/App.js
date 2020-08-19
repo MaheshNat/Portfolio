@@ -19,9 +19,12 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 import ReactGa from 'react-ga';
+import { pdfjs } from 'react-pdf';
 import axiosDefaults from 'axios/lib/defaults';
 
 axiosDefaults.baseURL = process.env.REACT_APP_BASE_URL;
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

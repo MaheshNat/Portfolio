@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,7 +12,7 @@ import {
 import ReactGa from 'react-ga';
 
 export default function Resume() {
-  const pages = 2;
+  const [pages, setPages] = useState(null);
   const [page, setPage] = useState(1);
   return (
     <div className="container">
@@ -76,12 +78,15 @@ export default function Resume() {
         className="row justify-content-center"
         style={{ marginBottom: '2em' }}
       >
-        <img
-          src={require(`../assets/images/Resume/Resume-${page}.png`)}
-          alt="Resume"
-          className="img-responsive col"
-          style={{ maxWidth: 800 }}
-        />
+        <Document
+          file={require('../assets/mahesh-natamai-resume.pdf')}
+          onLoadSuccess={({ _pdfInfo }) => {
+            console.log(_pdfInfo.numPages);
+            setPages(_pdfInfo.numPages);
+          }}
+        >
+          <Page pageNumber={page} />
+        </Document>
       </div>
     </div>
   );
