@@ -185,7 +185,7 @@ export default class Home extends Component {
               marginTop:
                 (this.state.height -
                   (70 +
-                    101 +
+                    (this.state.height > 600 ? 101 : 0) +
                     (this.main.current !== null
                       ? this.main.current.clientHeight
                       : 0))) /
