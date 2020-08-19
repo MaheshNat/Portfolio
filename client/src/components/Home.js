@@ -202,7 +202,9 @@ export default class Home extends Component {
               offset={-70}
               duration={500}
             >
-              <h2 style={{ cursor: 'pointer' }}>Read More</h2>
+              {this.state.height > 520 && (
+                <h2 style={{ cursor: 'pointer' }}>Read More</h2>
+              )}
               <FontAwesomeIcon
                 icon={faAngleDoubleDown}
                 size="3x"
