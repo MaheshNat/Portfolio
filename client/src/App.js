@@ -21,7 +21,7 @@ import thunk from 'redux-thunk';
 import ReactGa from 'react-ga';
 import axiosDefaults from 'axios/lib/defaults';
 
-axiosDefaults.baseURL = 'http://mnat.herokuapp.com/api';
+axiosDefaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
