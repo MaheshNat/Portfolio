@@ -10,7 +10,7 @@ class Navigation extends Component {
     return (
       <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
         <LinkContainer to="/">
-          <Navbar.Brand>Mahesh Natamai</Navbar.Brand>
+          <Navbar.Brand>Home</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

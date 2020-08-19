@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
+import LinkContainer from 'react-router-bootstrap';
 
 import WAVES from 'vanta/dist/vanta.waves.min';
 
@@ -158,30 +159,25 @@ export default class Home extends Component {
               <span className="text-success">data science</span>.
             </h4>
             <div className="row justify-content-center text-center">
-              <Link
-                to="/projects"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
+              <button
+                onClick={() => {
+                  this.props.history.push('/projects');
+                }}
+                type="button"
+                className="btn btn-outline-success btn-lg"
+                style={{ marginRight: '2em' }}
               >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Projects
-                </button>
-              </Link>
-              <Link
-                to="/resume"
-                className="col-xs-12 col-md-2"
-                style={{ marginBottom: '1em' }}
+                Projects
+              </button>
+              <button
+                onClick={() => {
+                  this.props.history.push('/resume');
+                }}
+                type="button"
+                className="btn btn-outline-success btn-lg"
               >
-                <button
-                  type="button"
-                  className="btn btn-outline-success btn-lg"
-                >
-                  Resume
-                </button>
-              </Link>
+                Resume
+              </button>
             </div>
           </div>
           <div
