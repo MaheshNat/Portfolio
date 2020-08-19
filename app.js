@@ -36,7 +36,7 @@ app.use('/api/resume', (req, res) => {
   res.download('./assets/mahesh-natamai-resume.pdf');
 });
 
-if (true) {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res, next) => {
     if (req.protocol === 'http') {
