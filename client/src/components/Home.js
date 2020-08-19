@@ -202,7 +202,7 @@ export default class Home extends Component {
               offset={-70}
               duration={500}
             >
-              {this.state.height > 520 && (
+              {this.state.height > 600 && (
                 <h2 style={{ cursor: 'pointer' }}>Read More</h2>
               )}
               <FontAwesomeIcon
