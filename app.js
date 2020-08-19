@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
+const sslRedirect = require('heroku-ssl-redirect');
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
@@ -16,7 +17,8 @@ const contactRouter = require('./routes/contact');
 const projectsRouter = require('./routes/projects');
 
 // Register middleware
-app.use(morgan('tiny'));
+if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
+app.use(sslRedirect());
 app.use(cors());
 app.use(express.json());
 app.use('/api/contact', contactRouter);
