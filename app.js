@@ -3,7 +3,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
-import sslRedirect from 'heroku-ssl-redirect';
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
@@ -15,6 +14,18 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const contactRouter = require('./routes/contact');
 const projectsRouter = require('./routes/projects');
+
+const sslRedirect = (environments = ['production'], status = 302) => {
+  const currentEnv = process.env.NODE_ENV;
+  const isCurrentEnv = environments.includes(currentEnv);
+  return (req, res, next) => {
+    if (isCurrentEnv) {
+      req.headers['x-forwarded-proto'] !== 'https'
+        ? res.redirect(status, 'https://' + req.hostname + req.originalUrl)
+        : next();
+    } else next();
+  };
+};
 
 // Register middleware
 if (process.env.NODE_ENV === 'development') app.use(morgan('tiny'));
