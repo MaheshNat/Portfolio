@@ -66,7 +66,7 @@ export default class Contact extends Component {
 
   render() {
     return (
-      <div className="container container-fluid">
+      <div className="container">
         <div
           className="jumbotron text-center"
           style={{ marginBottom: '1em', marginTop: '2em' }}
@@ -100,10 +100,11 @@ export default class Contact extends Component {
           className="row justify-content-cent"
           style={{ marginBottom: '1em' }}
         >
-          <div className="col text-center">
-            <h4 style={{ fontStyle: 'italic', letterSpacing: 2.5 }}>
-              maheshkumar.natamai@gmail.com
-            </h4>
+          <div
+            className="col text-center"
+            style={{ fontStyle: 'italic', letterSpacing: 2.5 }}
+          >
+            <h5>maheshkumar.natamai@gmail.com</h5>
           </div>
         </div>
         <div className="row justify-content-center">
