@@ -120,7 +120,7 @@ class Resume extends Component {
                 overflow: 'auto',
               }}
               className={
-                this.state.width > 768 ? 'row justify-content-center' : ''
+                this.state.width >= 768 ? 'row justify-content-center' : ''
               }
             >
               <Document
