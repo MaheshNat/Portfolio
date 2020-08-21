@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf';
+import { loadResume } from '../actions/resumeActions';
+import { connect } from 'react-redux';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +13,7 @@ import {
 
 import ReactGa from 'react-ga';
 
-export default class Resume extends Component {
+class Resume extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +35,7 @@ export default class Resume extends Component {
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+    this.props.loadResume();
   }
 
   componentWillUnmount() {
@@ -49,7 +52,7 @@ export default class Resume extends Component {
           <h1>
             Resume{' '}
             <a
-              href={'https://maheshnat.me/api/resume'}
+              href={`${process.env.REACT_APP_BASE_URL}/resume`}
               onClick={() => {
                 ReactGa.event({
                   category: 'Resume',
@@ -69,61 +72,93 @@ export default class Resume extends Component {
             <span className="text-success">more</span>.
           </h4>
         </div>
-        <div
-          className="text-center row justify-content-center"
-          style={{ marginBottom: '2em', marginTop: '2em' }}
-        >
-          <button
-            className="col-xs-2 btn btn-success"
-            disabled={this.state.page === 1}
-            style={{
-              cursor: this.state.page === 1 ? 'not-allowed' : 'default',
-            }}
-            onClick={() => {
-              this.setState((state, props) => ({ page: state.page - 1 }));
-            }}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-          <h5
-            className="col-xs-2"
-            style={{ paddingTop: 8, marginLeft: '1em', marginRight: '1em' }}
-          >
-            Page {this.state.page} of {this.state.pages}
-          </h5>
-          <button
-            className="col-xs-2 btn btn-success"
-            disabled={this.state.page === this.state.pages}
-            style={{
-              cursor:
-                this.state.page === this.state.pages
-                  ? 'not-allowed'
-                  : 'default',
-            }}
-            onClick={() => {
-              this.setState((state, props) => ({ page: this.state.page + 1 }));
-            }}
-          >
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
-        </div>
-        <div
-          style={{
-            marginBottom: '2em',
-            overflow: 'auto',
-          }}
-          className={this.state.width > 768 ? 'row justify-content-center' : ''}
-        >
-          <Document
-            file={require('../assets/mahesh-natamai-resume.pdf')}
-            onLoadSuccess={({ _pdfInfo }) =>
-              this.setState({ pages: _pdfInfo.numPages })
-            }
-          >
-            <Page pageNumber={this.state.page} />
-          </Document>
-        </div>
+        {this.props.resume ? (
+          <>
+            <div
+              className="text-center row justify-content-center"
+              style={{ marginBottom: '2em', marginTop: '2em' }}
+            >
+              <button
+                className="col-xs-2 btn btn-success"
+                disabled={this.state.page === 1}
+                style={{
+                  cursor: this.state.page === 1 ? 'not-allowed' : 'default',
+                }}
+                onClick={() => {
+                  this.setState((state, props) => ({ page: state.page - 1 }));
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </button>
+              <h5
+                className="col-xs-2"
+                style={{ paddingTop: 8, marginLeft: '1em', marginRight: '1em' }}
+              >
+                Page {this.state.page} of {this.state.pages}
+              </h5>
+              <button
+                className="col-xs-2 btn btn-success"
+                disabled={this.state.page === this.state.pages}
+                style={{
+                  cursor:
+                    this.state.page === this.state.pages
+                      ? 'not-allowed'
+                      : 'default',
+                }}
+                onClick={() => {
+                  this.setState((state, props) => ({
+                    page: this.state.page + 1,
+                  }));
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </div>
+            <div
+              style={{
+                marginBottom: '2em',
+                overflow: 'auto',
+              }}
+              className={
+                this.state.width > 768 ? 'row justify-content-center' : ''
+              }
+            >
+              <Document
+                file={this.props.resume}
+                onLoadSuccess={({ _pdfInfo }) =>
+                  this.setState({ pages: _pdfInfo.numPages })
+                }
+              >
+                <Page pageNumber={this.state.page} />
+              </Document>
+            </div>
+          </>
+        ) : (
+          <div className="row justify-content-center">
+            <div className="col text-center">
+              <div
+                className="spinner-border"
+                style={{ width: '8em', height: '8em', marginBottom: '2em' }}
+                role="status"
+              ></div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    resume: state.resume,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadResume: () => {
+      dispatch(loadResume());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Resume);

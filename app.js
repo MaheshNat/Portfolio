@@ -3,6 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
+const fs = require('fs');
+const request = require('request-promise-native');
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
@@ -49,6 +51,10 @@ app.use('/api/resume', (req, res) => {
   res.download('./assets/mahesh-natamai-resume.pdf');
 });
 
+app.use('/api/resume-file', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'assets', 'mahesh-natamai-resume.pdf'));
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res, next) => {
@@ -63,7 +69,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 
 //Schedule Cron Jobs
 const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
-const youtubeJob = new CronJob(
+new CronJob(
   process.env.YOUTUBE_UPDATE_SCHEDULE,
   () => {
     console.log('starting youtube cron job...');
@@ -93,11 +99,10 @@ const youtubeJob = new CronJob(
   process.env.TIME_ZONE,
   null,
   true
-);
-youtubeJob.start();
+).start();
 
 const octokit = new Octokit();
-const githubJob = new CronJob(
+new CronJob(
   process.env.GITHUB_UPDATE_SCHEDULE,
   () => {
     console.log('starting github cron job...');
@@ -130,7 +135,24 @@ const githubJob = new CronJob(
   process.env.TIME_ZONE,
   null,
   true
-);
-githubJob.start();
+).start();
+
+new CronJob(
+  process.env.RESUME_UPDATE_SCHEDULE,
+  () => {
+    console.log('starting resume cron job...');
+    request
+      .get({ uri: process.env.RESUME_DOWNLOAD_LINK, encoding: null })
+      .then((pdfBuffer) => {
+        fs.writeFileSync('./assets/mahesh-natamai-resume.pdf', pdfBuffer);
+        console.log('Updated mahesh-natamai-resume.pdf');
+      });
+  },
+  null,
+  true,
+  process.env.TIME_ZONE,
+  null,
+  true
+).start();
 
 app.listen(PORT);

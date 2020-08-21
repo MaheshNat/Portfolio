@@ -134,7 +134,7 @@ export default class Home extends Component {
               </div>
               <div style={{ marginBottom: '1em' }}>
                 <a
-                  href="https://maheshnat.me/api/resume"
+                  href={`${process.env.REACT_APP_BASE_URL}/resume`}
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',
