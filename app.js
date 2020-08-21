@@ -69,7 +69,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
 
 //Schedule Cron Jobs
 const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
-new CronJob(
+const youtubeJob = new CronJob(
   process.env.YOUTUBE_UPDATE_SCHEDULE,
   () => {
     console.log('starting youtube cron job...');
@@ -81,7 +81,6 @@ new CronJob(
             videos
               .filter((video) => video.channel.id === process.env.CHANNEL_ID)
               .forEach((episode) => {
-                console.log(episode);
                 const _episode = new Episode({
                   title: episode.title,
                   description: episode.description,
@@ -92,6 +91,7 @@ new CronJob(
               });
           });
       })
+      .then((res) => console.log('Updated all podcast youtube videos.'))
       .catch((err) => console.log(err));
   },
   null,
@@ -99,10 +99,11 @@ new CronJob(
   process.env.TIME_ZONE,
   null,
   true
-).start();
+);
+youtubeJob.start();
 
 const octokit = new Octokit();
-new CronJob(
+const githubJob = new CronJob(
   process.env.GITHUB_UPDATE_SCHEDULE,
   () => {
     console.log('starting github cron job...');
@@ -135,9 +136,10 @@ new CronJob(
   process.env.TIME_ZONE,
   null,
   true
-).start();
+);
+githubJob.start();
 
-new CronJob(
+const resumeJob = new CronJob(
   process.env.RESUME_UPDATE_SCHEDULE,
   () => {
     console.log('starting resume cron job...');
@@ -153,6 +155,7 @@ new CronJob(
   process.env.TIME_ZONE,
   null,
   true
-).start();
+);
+resumeJob.start();
 
 app.listen(PORT);
