@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
-const request = require('request-promise-native');
+const axios = require('axios');
 const CronJob = require('cron').CronJob;
 const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
@@ -143,12 +143,16 @@ const resumeJob = new CronJob(
   process.env.RESUME_UPDATE_SCHEDULE,
   () => {
     console.log('starting resume cron job...');
-    request
-      .get({ uri: process.env.RESUME_DOWNLOAD_LINK, encoding: null })
-      .then((pdfBuffer) => {
-        fs.writeFileSync('./assets/mahesh-natamai-resume.pdf', pdfBuffer);
-        console.log('Updated mahesh-natamai-resume.pdf');
-      });
+    axios({
+      method: 'get',
+      url: process.env.RESUME_DOWNLOAD_LINK,
+      responseType: 'stream',
+    }).then((response) => {
+      response.data.pipe(
+        fs.createWriteStream('./assets/mahesh-natamai-resume.pdf')
+      );
+      console.log('Updated resume pdf.');
+    });
   },
   null,
   true,
