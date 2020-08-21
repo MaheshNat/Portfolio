@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Modal } from 'react-bootstrap';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +13,8 @@ const ProjectGif = (props) => {
   return (
     <div>
       <div className="row justify-contenc">
-        <img
+        <LazyLoadImage
+          effect="blur"
           className="img-responsive col"
           src={require(`../assets/gifs/${props.title.replace(' ', '')}.gif`)}
           alt="No demo gif"

@@ -28,10 +28,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-if (process.env.NODE_ENV === 'production')
-  ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
-
 class App extends Component {
+  componentDidMount() {
+    if (process.env.NODE_ENV === 'production')
+      ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+  }
   render() {
     return (
       <Provider store={store}>
