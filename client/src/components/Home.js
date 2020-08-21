@@ -134,7 +134,7 @@ export default class Home extends Component {
               </div>
               <div style={{ marginBottom: '1em' }}>
                 <a
-                  href="http://mnat.herokuapp.com/api/resume"
+                  href="https://maheshnat.me/api/resume"
                   onClick={(e) => {
                     ReactGa.event({
                       category: 'Home',

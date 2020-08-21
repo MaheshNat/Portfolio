@@ -49,7 +49,7 @@ export default class Resume extends Component {
           <h1>
             Resume{' '}
             <a
-              href={'http://mnat.herokuapp.com/api/resume'}
+              href={'https://maheshnat.me/api/resume'}
               onClick={() => {
                 ReactGa.event({
                   category: 'Resume',
