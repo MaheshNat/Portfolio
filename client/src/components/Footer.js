@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer
       className="footer bg-secondary"
-      style={{ paddingTop: 120, paddingBottom: 120 }}
+      style={{ paddingTop: 120, paddingBottom: 0 }}
     >
       <div className="container">
         <div
@@ -85,6 +85,14 @@ export default function Footer() {
             >
               <FontAwesomeIcon icon={faInstagram} size="3x" />
             </a>
+          </div>
+        </div>
+        <div
+          className="row justify-content-center text-center"
+          style={{ marginTop: 82 }}
+        >
+          <div className="col">
+            <p>Mahesh Natamai - 2020</p>
           </div>
         </div>
       </div>
