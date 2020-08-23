@@ -5,7 +5,12 @@ export default (state = initialState, action) => {
     case 'LOAD_REPOSITORIES':
       return { ...state, repositories: action.repositories };
     case 'LOAD_PROJECTS':
-      return { ...state, projects: action.projects };
+      return {
+        ...state,
+        projects: action.projects.sort(
+          (a, b) => new Date(b.startDate) - new Date(a.startDate)
+        ),
+      };
     case 'LOAD_EPISODES':
       return { ...state, episodes: action.episodes };
     case 'LOAD_RESUME':

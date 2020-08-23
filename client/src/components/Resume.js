@@ -7,6 +7,7 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faDownload,
+  faExternalLinkAlt,
   faArrowLeft,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
@@ -61,6 +62,19 @@ class Resume extends Component {
               }}
             >
               <FontAwesomeIcon icon={faDownload} />
+            </a>{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`${process.env.REACT_APP_BASE_URL}/resume-file`}
+              onClick={() => {
+                ReactGa.event({
+                  category: 'Resume',
+                  action: 'Viewed resume blob.',
+                });
+              }}
+            >
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
             </a>
           </h1>
 
