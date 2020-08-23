@@ -4,13 +4,61 @@ import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Project = (props) => {
   return (
     <div className="card">
       <h3 className="card-header">
-        {props.title}
+        {props.title}{' '}
+        {props.demoLink && (
+          <a
+            href={props.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-link"
+            onClick={(e) => {
+              ReactGa.event({
+                category: 'Project',
+                action: `Clicked on ${props.title} demo link.`,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faLink} size="1x" />
+          </a>
+        )}
+        {props.githubLink && (
+          <a
+            href={props.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-link"
+            onClick={(e) => {
+              ReactGa.event({
+                category: 'Project',
+                action: `Clicked on ${props.title} github link.`,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faGithub} size="1x" />
+          </a>
+        )}
+        {props.devpostLink && (
+          <a
+            href={props.devpostLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-link"
+            onClick={(e) => {
+              ReactGa.event({
+                category: 'Project',
+                action: `Clicked on ${props.title} devpost link.`,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faExternalLinkAlt} size="1x" />
+          </a>
+        )}
         <p className="text-muted" style={{ fontSize: 20 }}>
           {new Date(props.startDate).toDateString()} -{' '}
           {new Date(props.endDate).toDateString() === 'Invalid Date'
@@ -35,59 +83,6 @@ const Project = (props) => {
             <li key={sentence}>{sentence}</li>
           ))}
         </ul>
-        <h5 className="card-title">Links</h5>
-        <hr />
-        <div
-          className="row justify-content-center text-center"
-          style={{ marginBottom: '1em' }}
-        >
-          {props.demoLink && (
-            <a
-              href={props.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-link col"
-              onClick={(e) => {
-                ReactGa.event({
-                  category: 'Project',
-                  action: `Clicked on ${props.title} demo link.`,
-                });
-              }}
-            >
-              <FontAwesomeIcon icon={faLink} size="2x" />
-            </a>
-          )}
-          <a
-            href={props.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-link col"
-            onClick={(e) => {
-              ReactGa.event({
-                category: 'Project',
-                action: `Clicked on ${props.title} github link.`,
-              });
-            }}
-          >
-            <FontAwesomeIcon icon={faGithub} size="2x" />
-          </a>
-          {props.devpostLink && (
-            <a
-              href={props.devpostLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-link col"
-              onClick={(e) => {
-                ReactGa.event({
-                  category: 'Project',
-                  action: `Clicked on ${props.title} devpost link.`,
-                });
-              }}
-            >
-              <h6>Devpost</h6>
-            </a>
-          )}
-        </div>
         <h5 className="cart-title">Creators</h5>
         <hr />
         <div className="row justify-content-center text-center">

@@ -59,14 +59,15 @@ class Projects extends Component {
             Note: This page does not contain all my projects
           </p>
         </div>
-        <div
-          className="row justify-content-center text-center"
-          style={{ margin: '1em 0em' }}
-        >
-          <div className="col-xs-12">
-            <h6 className="card-subtitle mb-2 text-muted">
-              {this.props.projects &&
-                Array.from(
+        {this.props.projects && (
+          <div
+            className="row justify-content-center text-center"
+            style={{ margin: '1em 0em' }}
+          >
+            <h3>All Languages/Skills</h3>
+            <div className="col-xs-12" style={{ marginBottom: '1em' }}>
+              <h6 className="card-subtitle mb-2 text-muted">
+                {Array.from(
                   new Set(
                     [].concat(
                       ...this.props.projects.map((project) => project.languages)
@@ -81,23 +82,24 @@ class Projects extends Component {
                     {language}
                   </span>
                 ))}
-            </h6>
-          </div>
-          <div className="col-xs-12">
-            <div className="div form-group">
-              <label htmlFor="search">
-                Search Projects By Languages/Skills
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                onChange={(e) => {
-                  this.setState({ query: e.target.value });
-                }}
-              />
+              </h6>
+            </div>
+            <div className="col-xs-12">
+              <div className="div form-group">
+                <label htmlFor="search">
+                  Search Projects By Languages/Skills
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={(e) => {
+                    this.setState({ query: e.target.value });
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
         {this.props.projects ? (
           this.props.projects
             .filter((project) =>
