@@ -31,8 +31,8 @@ export default class Home extends Component {
       touchControls: true,
       minHeight: 200.0,
       minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
+      scale: 0.8,
+      scaleMobile: 0.8,
       color: 0x886f,
       shininess: 30.0,
       waveHeight: 13.5,
@@ -154,7 +154,9 @@ export default class Home extends Component {
               <span className="text-success">software engineering</span>,{' '}
               <span className="text-success">machine learning</span>,{' '}
               <span className="text-success">robotics</span>, and{' '}
-              <span className="text-success">data science</span>.
+              <span className="text-success">data science</span>, with an
+              affinity for <span className="text-success">finance</span> and{' '}
+              <span className="text-success">investing</span>.
             </h4>
             <div className="row justify-content-center text-center">
               <button
@@ -225,13 +227,36 @@ export default class Home extends Component {
               Engineering At Townview Magnet Center in Dallas, TX. I'm
               interested in web development, machine learning, data science, app
               development, as well as robotics, and have been teaching myself
-              these topics.
+              these topics. Additionally, I have an affinity for finance and
+              investing, which I discuss with my friends on our podcast,{' '}
+              <a
+                href="https://linktr.ee/dalalstreetpodcast"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  ReactGa.event({
+                    category: 'Home',
+                    action: 'Clicked podcast linktree.',
+                  });
+                }}
+              >
+                The Dogs Of Dalal Street
+              </a>
+              , where we educate our viewers on different types of securities
+              and financial topics like portfolio management, discuss the
+              current state of the american economy, and more. I use my
+              knowledge in these domains to put ideas into effect and make an
+              impact, whether through hackathons, personal projects, or
+              competitive programming,
             </p>
             <div className="row justify-content-center">
               <div className="col-xs-12 col-sm-6 col-lg-4">
                 <h4>Web Development</h4>
                 <ul>
-                  <li>Front End: Angular, React (Redux), Bootstrap</li>
+                  <li>
+                    Front End: HTML/CSS, JavaScript, TypeScript, Angular,
+                    React/Redux, Bootstrap
+                  </li>
                   <li>
                     Back End: Node.JS (Express.JS), Flask (Python), MongoDB,
                     Mongoose, Firebase
@@ -255,6 +280,12 @@ export default class Home extends Component {
                 <h4>Robotics</h4>
                 <ul>
                   <li>FTC Robotics (Java), OpenCV (Java, Python)</li>
+                </ul>
+              </div>
+              <div className="col-xs-12 col-sm-6 col-lg-4">
+                <h4>App Development (learning)</h4>
+                <ul>
+                  <li>Flutter (Dart)</li>
                 </ul>
               </div>
             </div>

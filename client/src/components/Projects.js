@@ -50,9 +50,9 @@ class Projects extends Component {
           <h1>Projects</h1>
           <h4>
             Collection of my{' '}
-            <span className="text-success">web development </span>(back end /
-            front end), <span className="text-success">machine learning</span>,
-            and other projects.
+            <span className="text-success">web development </span>(fullstack),{' '}
+            <span className="text-success">machine learning</span>, and other
+            projects.
           </h4>
           <h4>Click on a gif / picture to view it in a modal.</h4>
           <p className="lead">

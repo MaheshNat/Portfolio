@@ -10,13 +10,20 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectGif = (props) => {
+  const getGif = () => {
+    try {
+      return require(`../assets/gifs/${props.title.replace(' ', '')}.gif`);
+    } catch {
+      return require('../assets/gifs/NotFound.gif');
+    }
+  };
   return (
     <div>
       <div className="row justify-contenc">
         <LazyLoadImage
           effect="blur"
           className="img-responsive col"
-          src={require(`../assets/gifs/${props.title.replace(' ', '')}.gif`)}
+          src={getGif()}
           alt="No demo gif"
           onClick={() => {
             props.onClick();

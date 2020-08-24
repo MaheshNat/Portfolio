@@ -125,16 +125,17 @@ class Podcast extends Component {
             other <span className="text-success">finance</span> related topics.
           </h4>
         </div>
-        <div id="episode">
+        <div className="row justify-content-center">
           {this.props.episodes ? (
             this.props.episodes.map((episode) => (
-              <Episode
-                key={episode._id}
-                publishedAt={episode.publishedAt}
-                title={episode.title}
-                description={episode.description}
-                url={episode.url}
-              />
+              <div className="col-lg-4 col-md-6 col-xs-12" key={episode._id}>
+                <Episode
+                  publishedAt={episode.publishedAt}
+                  title={episode.title}
+                  description={episode.description}
+                  url={episode.url}
+                />{' '}
+              </div>
             ))
           ) : (
             <div className="row justify-content-center">
