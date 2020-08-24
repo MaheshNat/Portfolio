@@ -47,7 +47,7 @@ class App extends Component {
             <Route path="/podcast" component={Podcast} />
             <Route component={Error} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </Provider>
     );
