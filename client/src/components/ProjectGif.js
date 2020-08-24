@@ -93,10 +93,7 @@ const ProjectGif = (props) => {
           <div className="row justify-content-center">
             <img
               className="img-responsive col"
-              src={require(`../assets/gifs/${props.title.replace(
-                ' ',
-                ''
-              )}.gif`)}
+              src={getGif()}
               alt="No demo gif"
             />
           </div>
