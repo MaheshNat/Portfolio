@@ -36,6 +36,11 @@ class Projects extends Component {
             projects.
           </h4>
           <h4>Click on a gif / picture to view it in a modal.</h4>
+          <h4>Click on a language/skill to add it to the search.</h4>
+          <h4>
+            Press enter in the search bar to add a search query to list of
+            queries. Click on a query to remove it from the list of queries.
+          </h4>
           <p className="lead">
             Note: This page does not contain all my projects
           </p>
