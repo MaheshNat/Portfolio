@@ -12,6 +12,7 @@ import { loadEpisodes } from '../actions/episodeActions';
 
 import ReactGa from 'react-ga';
 import Episode from './Episode';
+import Spinner from './Spinner';
 
 class Podcast extends Component {
   componentDidMount = () => {
@@ -138,15 +139,7 @@ class Podcast extends Component {
               </div>
             ))
           ) : (
-            <div className="row justify-content-center">
-              <div className="col text-center">
-                <div
-                  className="spinner-border"
-                  style={{ width: '8em', height: '8em', marginBottom: '2em' }}
-                  role="status"
-                ></div>
-              </div>
-            </div>
+            <Spinner />
           )}
         </div>
       </div>

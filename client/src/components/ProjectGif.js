@@ -8,6 +8,7 @@ import ReactGa from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const ProjectGif = (props) => {
   const getGif = () => {
@@ -19,20 +20,34 @@ const ProjectGif = (props) => {
   };
   return (
     <div>
-      <div className="row justify-contenc">
-        <LazyLoadImage
-          effect="blur"
-          className="img-responsive col"
-          src={getGif()}
-          alt="No demo gif"
-          onClick={() => {
-            props.onClick();
-            ReactGa.event({
-              category: 'Project',
-              action: `Clicked on ${props.title} modal.`,
-            });
-          }}
-        />
+      <div className="row">
+        <OverlayTrigger
+          placement="bottom"
+          overlay={(props) => (
+            <Tooltip id="button-tooltip" {...props}>
+              Click to view project gif in modal
+            </Tooltip>
+          )}
+        >
+          <LazyLoadImage
+            effect="blur"
+            className="img-responsive col"
+            style={{
+              display: 'block',
+              width: '100%',
+              height: 'auto',
+            }}
+            src={getGif()}
+            alt="No demo gif"
+            onClick={() => {
+              props.onClick();
+              ReactGa.event({
+                category: 'Project',
+                action: `Clicked on ${props.title} modal.`,
+              });
+            }}
+          />
+        </OverlayTrigger>
       </div>
 
       <Modal

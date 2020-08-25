@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { loadProjects } from '../actions/projectsActions';
 import Project from './Project';
 import ProjectGif from './ProjectGif';
+import Spinner from './Spinner';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import ReactGa from 'react-ga';
 
@@ -37,83 +39,103 @@ class Projects extends Component {
           </p>
         </div>
         {this.props.projects && (
-          <div
-            className="row justify-content-center text-center"
-            style={{ margin: '1em 0em' }}
-          >
-            <h3>All Languages/Skills</h3>
-            <div className="col-xs-12" style={{ marginBottom: '1em' }}>
-              <h6 className="card-subtitle mb-2 text-muted">
-                {Array.from(
-                  new Set(
-                    [].concat(
-                      ...this.props.projects.map((project) => project.languages)
+          <>
+            <div
+              className="row justify-content-center text-center"
+              style={{ margin: '1em 0em' }}
+            >
+              <h3>All Languages/Skills</h3>
+              <div className="col-xs-12">
+                <h6 className="card-subtitle mb-2 text-muted">
+                  {Array.from(
+                    new Set(
+                      [].concat(
+                        ...this.props.projects.map(
+                          (project) => project.languages
+                        )
+                      )
                     )
-                  )
-                ).map((language) => (
+                  ).map((language) => (
+                    <span
+                      key={language}
+                      className="badge badge-info"
+                      style={{ marginRight: '1em' }}
+                    >
+                      {language}
+                    </span>
+                  ))}
+                </h6>
+              </div>
+            </div>
+            <hr style={{ color: 'white', backgroundColor: 'white' }} />
+            <div className="row justify-content-center">
+              <div className="col-xs-12">
+                {this.state.queries.map((query, index) => (
                   <span
-                    key={language}
                     className="badge badge-info"
-                    style={{ marginRight: '1em' }}
+                    style={{ marginRight: '1em', marginBottom: '1em' }}
+                    key={query}
                   >
-                    {language}
+                    {query}{' '}
+                    <span
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        let newQueries = this.state.queries;
+                        newQueries.splice(index, 1);
+                        this.setState({
+                          queries: newQueries,
+                        });
+                      }}
+                    >
+                      &times;
+                    </span>
                   </span>
                 ))}
-              </h6>
-            </div>
-            <div className="col-xs-12">
-              <div className="div form-group">
-                <label htmlFor="search">
-                  Search Projects By Languages/Skills
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.query}
-                  onChange={(e) => {
-                    this.setState({ query: e.target.value });
-                  }}
-                  onKeyPress={(e) => {
-                    if (
-                      e.key === 'Enter' &&
-                      this.state.query !== '' &&
-                      !this.state.queries
-                        .map((query) => query.toLowerCase())
-                        .includes(this.state.query.toLowerCase())
-                    ) {
-                      let newQueries = this.state.queries;
-                      newQueries.push(this.state.query);
-                      this.setState({
-                        queries: newQueries,
-                        query: '',
-                      });
-                    }
-                  }}
-                />
               </div>
-              {this.state.queries.map((query, index) => (
-                <span
-                  className="badge badge-info"
-                  style={{ marginRight: '1em' }}
-                  key={query}
-                >
-                  {query}{' '}
-                  <span
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      let newQueries = this.state.queries;
-                      newQueries.splice(index, 1);
-                      this.setState({
-                        queries: newQueries,
-                      });
-                    }}
-                  >
-                    &times;
-                  </span>
-                </span>
-              ))}
             </div>
-          </div>
+            <div className="row justify-content-center">
+              <div className="col-xs-12">
+                <div className="div form-group">
+                  <label htmlFor="search">
+                    Search Projects By Languages/Skills
+                  </label>
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={(props) => (
+                      <Tooltip id="button-tooltip" {...props}>
+                        Press enter to add language/skill to search
+                      </Tooltip>
+                    )}
+                  >
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.query}
+                      onChange={(e) => {
+                        this.setState({ query: e.target.value });
+                      }}
+                      onKeyPress={(e) => {
+                        if (
+                          e.key === 'Enter' &&
+                          this.state.query !== '' &&
+                          !this.state.queries
+                            .map((query) => query.toLowerCase())
+                            .includes(this.state.query.toLowerCase())
+                        ) {
+                          let newQueries = this.state.queries;
+                          newQueries.push(this.state.query);
+                          this.setState({
+                            queries: newQueries,
+                            query: '',
+                          });
+                        }
+                      }}
+                    />
+                  </OverlayTrigger>
+                </div>
+              </div>
+            </div>
+          </>
         )}
         {this.props.projects ? (
           this.props.projects
@@ -170,15 +192,7 @@ class Projects extends Component {
               </div>
             ))
         ) : (
-          <div className="row justify-content-center">
-            <div className="col text-center">
-              <div
-                className="spinner-border"
-                style={{ width: '8em', height: '8em', marginBottom: '2em' }}
-                role="status"
-              ></div>
-            </div>
-          </div>
+          <Spinner />
         )}
       </div>
     );

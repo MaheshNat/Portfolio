@@ -5,6 +5,7 @@ import { OverlayTrigger, Tooltip, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import ReactGa from 'react-ga';
+import Spinner from './Spinner';
 
 class Software extends Component {
   constructor(props) {
@@ -179,7 +180,6 @@ class Software extends Component {
                   <td>{repo.title}</td>
                   <OverlayTrigger
                     placement="bottom"
-                    delay={{ show: 250, hide: 400 }}
                     overlay={(props) => (
                       <Tooltip id="button-tooltip" {...props}>
                         {repo.description}
@@ -219,15 +219,7 @@ class Software extends Component {
             </tbody>
           </Table>
         ) : (
-          <div className="row justify-content-center">
-            <div className="col text-center">
-              <div
-                className="spinner-border"
-                style={{ width: '8em', height: '8em', marginBottom: '2em' }}
-                role="status"
-              ></div>
-            </div>
-          </div>
+          <Spinner />
         )}
       </div>
     );
