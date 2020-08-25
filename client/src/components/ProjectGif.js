@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { Modal } from 'react-bootstrap';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,8 +27,7 @@ const ProjectGif = (props) => {
             </Tooltip>
           )}
         >
-          <LazyLoadImage
-            effect="blur"
+          <img
             className="img-responsive col"
             style={{
               display: 'block',

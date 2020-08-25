@@ -73,22 +73,21 @@ class Projects extends Component {
                 {this.state.queries.map((query, index) => (
                   <span
                     className="badge badge-info"
-                    style={{ marginRight: '1em', marginBottom: '1em' }}
+                    style={{
+                      marginRight: '1em',
+                      marginBottom: '1em',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      let newQueries = this.state.queries;
+                      newQueries.splice(index, 1);
+                      this.setState({
+                        queries: newQueries,
+                      });
+                    }}
                     key={query}
                   >
-                    {query}{' '}
-                    <span
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        let newQueries = this.state.queries;
-                        newQueries.splice(index, 1);
-                        this.setState({
-                          queries: newQueries,
-                        });
-                      }}
-                    >
-                      &times;
-                    </span>
+                    {query} &times;
                   </span>
                 ))}
               </div>
