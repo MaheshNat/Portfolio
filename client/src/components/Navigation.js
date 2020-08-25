@@ -3,9 +3,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class Navigation extends Component {
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
   render() {
     return (
       <Navbar bg="dark" variant="dark" expand="sm" sticky="top">

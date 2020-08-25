@@ -7,7 +7,7 @@ import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectGif = (props) => {
   const getGif = () => {
@@ -39,7 +39,7 @@ const ProjectGif = (props) => {
         size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        show={props.showModals[props.id]}
+        show={props.show}
         onHide={props.onHide}
       >
         <Modal.Header closeButton>
@@ -49,6 +49,8 @@ const ProjectGif = (props) => {
               {props.demoLink && (
                 <a
                   href={props.demoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="card-link"
                   onClick={(e) => {
                     ReactGa.event({
@@ -63,6 +65,8 @@ const ProjectGif = (props) => {
               <a
                 href={props.githubLink}
                 className="card-link"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={(e) => {
                   ReactGa.event({
                     category: 'Project',
@@ -75,6 +79,8 @@ const ProjectGif = (props) => {
               {props.devpostLink && (
                 <a
                   href={props.devpostLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="card-link"
                   onClick={(e) => {
                     ReactGa.event({
@@ -83,7 +89,7 @@ const ProjectGif = (props) => {
                     });
                   }}
                 >
-                  Devpost
+                  <FontAwesomeIcon icon={faExternalLinkAlt} size="1x" />
                 </a>
               )}
             </div>

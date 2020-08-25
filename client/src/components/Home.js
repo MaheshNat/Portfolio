@@ -41,8 +41,6 @@ export default class Home extends Component {
     });
   }
 
-  componentWillMount() {}
-
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }

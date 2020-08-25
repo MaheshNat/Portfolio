@@ -10,37 +10,14 @@ class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModals: {},
       query: '',
+      queries: [],
     };
   }
+
   componentDidMount = () => {
     if (!this.props.projects) this.props.loadProjects();
     ReactGa.pageview(window.location.pathname + window.location.search);
-  };
-
-  componentWillReceiveProps = (props) => {
-    if (this.state.showModals === {}) {
-      let _showModals = {};
-      props.projects.forEach((project) => {
-        _showModals[project._id] = false;
-      });
-      console.log(_showModals);
-      this.setState({ showModals: _showModals });
-    }
-    this.setState({ projects: props.projects });
-  };
-
-  onClick = (id) => {
-    let newShowModals = this.state.showModals;
-    newShowModals[id] = true;
-    this.setState({ showModals: newShowModals });
-  };
-
-  onHide = (id) => {
-    let newShowModals = this.state.showModals;
-    newShowModals[id] = false;
-    this.setState({ showModals: newShowModals });
   };
 
   render() {
@@ -92,20 +69,66 @@ class Projects extends Component {
                 <input
                   type="text"
                   className="form-control"
+                  value={this.state.query}
                   onChange={(e) => {
                     this.setState({ query: e.target.value });
                   }}
+                  onKeyPress={(e) => {
+                    if (
+                      e.key === 'Enter' &&
+                      this.state.query !== '' &&
+                      !this.state.queries
+                        .map((query) => query.toLowerCase())
+                        .includes(this.state.query.toLowerCase())
+                    ) {
+                      let newQueries = this.state.queries;
+                      newQueries.push(this.state.query);
+                      this.setState({
+                        queries: newQueries,
+                        query: '',
+                      });
+                    }
+                  }}
                 />
               </div>
+              {this.state.queries.map((query, index) => (
+                <span
+                  className="badge badge-info"
+                  style={{ marginRight: '1em' }}
+                  key={query}
+                >
+                  {query}{' '}
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let newQueries = this.state.queries;
+                      newQueries.splice(index, 1);
+                      this.setState({
+                        queries: newQueries,
+                      });
+                    }}
+                  >
+                    &times;
+                  </span>
+                </span>
+              ))}
             </div>
           </div>
         )}
         {this.props.projects ? (
           this.props.projects
-            .filter((project) =>
-              project.languages.some((language) =>
-                language.toLowerCase().includes(this.state.query.toLowerCase())
-              )
+            .filter(
+              (project) =>
+                project.languages.some((language) =>
+                  language
+                    .toLowerCase()
+                    .includes(this.state.query.toLowerCase())
+                ) &&
+                this.state.queries.every((language) =>
+                  project.languages
+                    .map((language) => language.toLowerCase())
+                    .includes(language.toLowerCase())
+                )
             )
             .map((project) => (
               <div
@@ -136,12 +159,12 @@ class Projects extends Component {
                     githubLink={project.githubLink}
                     devpostLink={project.devpostLink}
                     onClick={() => {
-                      this.onClick(project._id);
+                      this.props.showModal(project._id);
                     }}
                     onHide={() => {
-                      this.onHide(project._id);
+                      this.props.hideModal(project._id);
                     }}
-                    showModals={this.state.showModals}
+                    show={this.props.showModals[project._id]}
                   />
                 </div>
               </div>
@@ -164,12 +187,19 @@ class Projects extends Component {
 const mapStateToProps = (state) => {
   return {
     projects: state.projects,
+    showModals: state.showModals,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     loadProjects: () => {
       dispatch(loadProjects());
+    },
+    showModal: (id) => {
+      dispatch({ type: 'SHOW_MODAL', id: id });
+    },
+    hideModal: (id) => {
+      dispatch({ type: 'HIDE_MODAL', id: id });
     },
   };
 };
