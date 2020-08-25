@@ -14,6 +14,8 @@ class Projects extends Component {
     this.state = {
       query: '',
       queries: [],
+      hoverLanguage: null,
+      removeQuery: null,
     };
   }
 
@@ -56,13 +58,43 @@ class Projects extends Component {
                       )
                     )
                   ).map((language) => (
-                    <span
+                    <OverlayTrigger
                       key={language}
-                      className="badge badge-info"
-                      style={{ marginRight: '1em' }}
+                      placement="bottom"
+                      overlay={(props) => (
+                        <Tooltip id="button-tooltip" {...props}>
+                          Click to add language/skill to search
+                        </Tooltip>
+                      )}
                     >
-                      {language}
-                    </span>
+                      <span
+                        className={`badge badge-${
+                          language === this.state.hoverLanguage
+                            ? 'success'
+                            : 'info'
+                        }`}
+                        style={{ marginRight: '1em', cursor: 'pointer' }}
+                        onClick={() => {
+                          if (
+                            !this.state.queries
+                              .map((query) => query.toLowerCase())
+                              .includes(language.toLowerCase())
+                          ) {
+                            let newQueries = this.state.queries;
+                            newQueries.push(language);
+                            this.setState({ queries: newQueries });
+                          }
+                        }}
+                        onMouseEnter={() => {
+                          this.setState({ hoverLanguage: language });
+                        }}
+                        onMouseLeave={() => {
+                          this.setState({ hoverLanguage: null });
+                        }}
+                      >
+                        {language}
+                      </span>
+                    </OverlayTrigger>
                   ))}
                 </h6>
               </div>
@@ -72,7 +104,9 @@ class Projects extends Component {
               <div className="col-xs-12">
                 {this.state.queries.map((query, index) => (
                   <span
-                    className="badge badge-info"
+                    className={`badge badge-${
+                      query === this.state.removeQuery ? 'danger' : 'info'
+                    }`}
                     style={{
                       marginRight: '1em',
                       marginBottom: '1em',
@@ -86,6 +120,12 @@ class Projects extends Component {
                       });
                     }}
                     key={query}
+                    onMouseEnter={() => {
+                      this.setState({ removeQuery: query });
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({ removeQuery: null });
+                    }}
                   >
                     {query} &times;
                   </span>

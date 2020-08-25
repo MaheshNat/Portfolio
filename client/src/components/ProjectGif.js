@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ProjectGif = (props) => {
   const getGif = () => {
@@ -27,7 +29,7 @@ const ProjectGif = (props) => {
             </Tooltip>
           )}
         >
-          <img
+          <LazyLoadImage
             className="img-responsive col"
             style={{
               display: 'block',
@@ -36,6 +38,7 @@ const ProjectGif = (props) => {
             }}
             src={getGif()}
             alt="No demo gif"
+            effect={'blur'}
             onClick={() => {
               props.onClick();
               ReactGa.event({
@@ -109,7 +112,8 @@ const ProjectGif = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div className="row justify-content-center">
-            <img
+            <LazyLoadImage
+              effect="blur"
               className="img-responsive col"
               src={getGif()}
               alt="No demo gif"
