@@ -18,9 +18,6 @@ class Navigation extends Component {
             <LinkContainer to="/resume">
               <Nav.Link>Resume</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/software">
-              <Nav.Link>Software</Nav.Link>
-            </LinkContainer>
             <LinkContainer to="/podcast">
               <Nav.Link>Podcast</Nav.Link>
             </LinkContainer>

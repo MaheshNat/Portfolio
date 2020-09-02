@@ -6,9 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const CronJob = require('cron').CronJob;
-const { Octokit } = require('@octokit/rest');
 const YouTube = require('simple-youtube-api');
-const Repository = require('./models/Repository');
 const Episode = require('./models/Episode');
 
 const PORT = process.env.PORT || 8080;
@@ -39,11 +37,6 @@ app.use('/api/projects', projectsRouter);
 app.use('/api/episodes', (req, res) => {
   Episode.find({}).then((episodes) => {
     res.json(episodes);
-  });
-});
-app.use('/api/github', (req, res) => {
-  Repository.find({}).then((repos) => {
-    res.json(repos);
   });
 });
 
@@ -101,43 +94,6 @@ const youtubeJob = new CronJob(
   true
 );
 youtubeJob.start();
-
-const octokit = new Octokit();
-const githubJob = new CronJob(
-  process.env.GITHUB_UPDATE_SCHEDULE,
-  () => {
-    console.log('starting github cron job...');
-    Repository.deleteMany({})
-      .then((res) => {
-        octokit.repos
-          .listForUser({ username: process.env.GITHUB_USERNAME })
-          .then(({ data }) => {
-            data.forEach((repo) => {
-              const _repo = new Repository({
-                title: repo.name,
-                description: repo.description,
-                language: repo.language,
-                stars: repo.stargazers_count,
-                size: repo.size,
-                lastUpdatedAt: repo.updated_at,
-                createdAt: repo.created_at,
-                link: repo.html_url,
-              });
-              _repo.save();
-            });
-          })
-          .then((res) => console.log('Updated all github repositories.'))
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  },
-  null,
-  true,
-  process.env.TIME_ZONE,
-  null,
-  true
-);
-githubJob.start();
 
 const resumeJob = new CronJob(
   process.env.RESUME_UPDATE_SCHEDULE,
