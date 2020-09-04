@@ -36,6 +36,7 @@ const ProjectGif = (props) => {
               width: '100%',
               height: 'auto',
             }}
+            placeholderSrc="https://dummyimage.com/1200x631/303030/ffffff.png&text=Loading..."
             src={getGif()}
             alt="No demo gif"
             effect={'blur'}
