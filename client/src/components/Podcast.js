@@ -112,7 +112,7 @@ class Podcast extends Component {
               src={Dods}
               alt="Dogs Of Dalal Street Logo"
               className="img-responsive col"
-              style={{ maxWidth: 250 }}
+              style={{ maxWidth: 250, height: '100%' }}
             />
           </div>
           <h4>

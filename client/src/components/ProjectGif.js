@@ -39,7 +39,7 @@ const ProjectGif = (props) => {
             placeholderSrc="https://dummyimage.com/1200x631/303030/ffffff.png&text=Loading..."
             src={getGif()}
             alt="No demo gif"
-            effect={'blur'}
+            effect="black-and-white"
             onClick={() => {
               props.onClick();
               ReactGa.event({
@@ -114,7 +114,7 @@ const ProjectGif = (props) => {
         <Modal.Body>
           <div className="row justify-content-center">
             <LazyLoadImage
-              effect="blur"
+              effect="black-and-white"
               className="img-responsive col"
               src={getGif()}
               alt="No demo gif"
