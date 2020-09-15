@@ -7,6 +7,7 @@ const ProjectSchema = mongoose.Schema({
   demoLink: { type: String },
   githubLink: { type: String },
   devpostLink: { type: String },
+  gifLink: { type: String },
   creators: { type: Array, default: ['Mahesh Natamai'] },
 });
 

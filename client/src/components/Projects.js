@@ -225,6 +225,7 @@ class Projects extends Component {
                     demoLink={project.demoLink}
                     githubLink={project.githubLink}
                     devpostLink={project.devpostLink}
+                    gifLink={project.gifLink}
                     onClick={() => {
                       this.props.showModal(project._id);
                     }}

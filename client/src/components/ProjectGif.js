@@ -11,13 +11,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ProjectGif = (props) => {
-  const getGif = () => {
-    try {
-      return require(`../assets/gifs/${props.title.replace(' ', '')}.gif`);
-    } catch {
-      return require('../assets/gifs/NotFound.gif');
-    }
-  };
   return (
     <div>
       <div className="row">
@@ -37,9 +30,9 @@ const ProjectGif = (props) => {
               height: 'auto',
             }}
             placeholderSrc="https://dummyimage.com/1200x631/303030/ffffff.png&text=Loading..."
-            src={getGif()}
+            src={props.gifLink}
             alt="No demo gif"
-            effect="black-and-white"
+            effect="blur"
             onClick={() => {
               props.onClick();
               ReactGa.event({
@@ -114,9 +107,9 @@ const ProjectGif = (props) => {
         <Modal.Body>
           <div className="row justify-content-center">
             <LazyLoadImage
-              effect="black-and-white"
+              effect="blur"
               className="img-responsive col"
-              src={getGif()}
+              src={props.gifLink}
               alt="No demo gif"
             />
           </div>
