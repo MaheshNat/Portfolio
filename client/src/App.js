@@ -7,7 +7,6 @@ import Home from './components/Home';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Resume from './components/Resume';
 import Error from './components/Error';
 import Podcast from './components/Podcast';
 
@@ -24,10 +23,6 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class App extends Component {
   async componentDidMount() {
-    import('react-pdf').then(
-      (reactPdf) =>
-        (reactPdf.pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${reactPdf.pdfjs.version}/pdf.worker.js`)
-    );
     if (process.env.NODE_ENV === 'production')
       import('react-ga').then((ReactGa) => {
         ReactGa.initialize(process.env.REACT_APP_GA_TRACKING_ID);
@@ -41,7 +36,6 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/projects" component={Projects} />
-            <Route path="/resume" component={Resume} />
             <Route path="/contact" component={Contact} />
             <Route path="/podcast" component={Podcast} />
             <Route component={Error} />

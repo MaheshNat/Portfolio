@@ -167,15 +167,18 @@ export default class Home extends Component {
               >
                 Projects
               </button>
-              <button
-                onClick={() => {
-                  this.props.history.push('/resume');
-                }}
-                type="button"
-                className="btn btn-outline-success btn-lg"
+              <a
+                href={`${process.env.REACT_APP_BASE_URL}/resume-file`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Resume
-              </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg"
+                >
+                  Resume
+                </button>
+              </a>
             </div>
           </div>
           <div
@@ -269,8 +272,9 @@ export default class Home extends Component {
                     Octave
                   </li>
                   <li>
-                    Concepts: Machine Learning (Linear / Logistic Regression),
-                    Deep Learning (Neural Networks, CNNs, RNNs (LSTMs))
+                    Concepts: Linear/Logistic Regression, Neural Networks,
+                    Diagnosing Errors, SVM, K-Means Clustering, PCA, Anomaly
+                    Detection, Recommender Systems (Collabarative Filtering)
                   </li>
                 </ul>
               </div>

@@ -15,9 +15,13 @@ class Navigation extends Component {
             <LinkContainer to="/projects">
               <Nav.Link>Projects</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/resume">
-              <Nav.Link>Resume</Nav.Link>
-            </LinkContainer>
+            <Nav.Link
+              href={`${process.env.REACT_APP_BASE_URL}/resume-file`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </Nav.Link>
             <LinkContainer to="/podcast">
               <Nav.Link>Podcast</Nav.Link>
             </LinkContainer>
