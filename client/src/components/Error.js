@@ -23,15 +23,17 @@ export default function Error() {
               Projects
             </button>
           </Link>
-          <Link
-            to="/resume"
+          <a
+            href={`${process.env.REACT_APP_BASE_URL}/resume-file`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="col-xs-12 col-md-2"
             style={{ marginBottom: '1em' }}
           >
             <button type="button" className="btn btn-outline-success btn-lg">
               Resume
             </button>
-          </Link>
+          </a>
           <Link
             to="/podcast"
             className="col-xs-12 col-md-2"
