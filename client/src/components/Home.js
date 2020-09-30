@@ -4,11 +4,20 @@ import { Link as ScrollLink } from 'react-scroll';
 import WAVES from 'vanta/dist/vanta.waves.min';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleDown, faFile } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDoubleDown,
+  faFile,
+  faNewspaper,
+  faBrain,
+  faGraduationCap,
+  faLaptopCode,
+  faMoneyCheckAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Carousel } from 'react-bootstrap';
 
 import ReactGa from 'react-ga';
 
@@ -197,7 +206,7 @@ export default class Home extends Component {
           >
             <ScrollLink
               activeClass="active"
-              to="about"
+              to="adjectives"
               spy={true}
               smooth={true}
               offset={-70}
@@ -212,6 +221,37 @@ export default class Home extends Component {
                 style={{ cursor: 'pointer' }}
               />
             </ScrollLink>
+          </div>
+        </div>
+        <div
+          className="bg-secondary text-center"
+          style={{ paddingTop: 50, paddingBottom: 50 }}
+          id="adjectives"
+        >
+          <div className="container">
+            <div className="row jusify-content-center">
+              <div className="col-xs-4 col-md-3">
+                <FontAwesomeIcon icon={faNewspaper} size="4x" />
+                <br />
+                <h4>Creator</h4>
+              </div>
+              <div className="col-xs-4 col-md-3">
+                <FontAwesomeIcon icon={faBrain} size="4x" />
+                <br />
+                <h4>Lifelong Learner</h4>
+              </div>
+              <div className="col-xs-4 col-md-3">
+                <FontAwesomeIcon icon={faGraduationCap} size="4x" />
+                <br />
+                <h4>Student</h4>
+              </div>
+              <div className="col-xs-4 col-md-3">
+                <FontAwesomeIcon icon={faLaptopCode} size="4x" />
+                <FontAwesomeIcon icon={faMoneyCheckAlt} size="4x" />
+                <br />
+                <h5>Computer Science & Finance Enthusiast</h5>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -250,46 +290,96 @@ export default class Home extends Component {
               impact, whether through hackathons, personal projects, or
               competitive programming,
             </p>
-            <div className="row justify-content-center">
-              <div className="col-xs-12 col-sm-6 col-lg-4">
-                <h4>Web Development</h4>
-                <ul>
-                  <li>
-                    Front End: HTML/CSS, JavaScript, TypeScript, Angular,
-                    React/Redux, Bootstrap
-                  </li>
-                  <li>
-                    Back End: Node.JS (Express.JS), Flask (Python), MongoDB,
-                    Mongoose, Firebase
-                  </li>
-                </ul>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-lg-4">
-                <h4>Machine Learning / Data Science</h4>
-                <ul>
-                  <li>
-                    Technologies: Python, Numpy, Tensorflow (Keras), Matplotlib,
-                    Octave
-                  </li>
-                  <li>
-                    Concepts: Linear/Logistic Regression, Neural Networks,
-                    Diagnosing Errors, SVM, K-Means Clustering, PCA, Anomaly
-                    Detection, Recommender Systems (Collabarative Filtering)
-                  </li>
-                </ul>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-lg-4">
-                <h4>Robotics</h4>
-                <ul>
-                  <li>FTC Robotics (Java), OpenCV (Java, Python)</li>
-                </ul>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-lg-4">
-                <h4>App Development (learning)</h4>
-                <ul>
-                  <li>Flutter (Dart)</li>
-                </ul>
-              </div>
+          </div>
+        </div>
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-xs-12 col-lg-5 bg-dark">
+              <h2 style={{ margin: 0, letterSpacing: 15, marginBottom: '1em' }}>
+                ROBOTICS
+              </h2>
+              <p style={{ fontSize: 20, marginBottom: '1em' }}>
+                I am part of the FTC Robotics team 6832 Iron Reign, and develop
+                software using java for the annual competitions. The software I
+                develop consists of autonomous systems, control systems, and
+                primarily, computer vision systems using OpenCV. Our team's
+                skills have allowed us to qualify for the world champsionship in
+                Houston three years in a row, and teach our skills to younger
+                individuals using various gadgets (3d printers, LEGO sumo
+                robots, etc.) on our MXP (Mobile Tech Experience), a van
+                repurposed to teach STEM to the community. You can check out
+                more about our team on our website here:{' '}
+                <a
+                  href="https://ironreignrobotics.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Iron Reign Robotics Website
+                </a>
+                .
+              </p>
+            </div>
+            <div className="col-xs-12 col-lg-7" style={{ padding: 0 }}>
+              <Carousel interval={5000}>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="robotics/regionals_2020.jpeg"
+                    alt="First slide: Regionals"
+                  />
+                  <Carousel.Caption>
+                    <div className="carousel" z>
+                      <h3>
+                        FTC Robotics Wylie East Regional Championship 2020
+                      </h3>
+                      <p>
+                        Qualified for the world champsionship at the Wylie East
+                        Regional Championship in 2020 through 3rd place Inspire,
+                        3rd place Think, 1st place Connect, and Control awards.
+                      </p>
+                    </div>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="robotics/deloitte.jpeg"
+                    alt="Second slide: Deloitte"
+                  />
+                  <Carousel.Caption>
+                    <div className="carousel">
+                      <h3>Presenting To Deloitte</h3>
+                      <p>
+                        Presented to Deloitte LLC's Bot Development Team in
+                        their Dallas branch office to introduce them to our
+                        team, our robot, and FIRST.
+                      </p>
+                    </div>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100 img-repsonsive"
+                    src="robotics/dprg.jpg"
+                    alt="Third slide: DPRG"
+                  />
+                  <Carousel.Caption>
+                    <div className="carousel">
+                      <h3>Presenting To The DPRG</h3>
+                      <p>
+                        We reached out to the Dallas Personal Robotics Group to
+                        present. The DPRG are an organization in Dallas who have
+                        monthly meetings for robotics projects In past seasons,
+                        we've given them presentations about our seasonal
+                        progress in build and code. This year, we wanted to
+                        present again on computer vision, as this is something
+                        that they were very interested in, but we also wanted to
+                        give our actual presentation as practice for Regionals.
+                      </p>
+                    </div>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
             </div>
           </div>
         </div>

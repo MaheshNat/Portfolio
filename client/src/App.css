@@ -16,3 +16,25 @@
 .landing-text h1 {
   letter-spacing: 15;
 }
+
+.carousel {
+  background-color: rgb(48, 48, 48, 0.8);
+}
+
+@media (max-width: 991px) {
+  .carousel {
+    font-size: 2vw;
+  }
+  .carousel > h3 {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel {
+    font-size: 1vw;
+  }
+  .carousel > h3 {
+    font-size: 2vw;
+  }
+}

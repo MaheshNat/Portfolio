@@ -7,7 +7,6 @@ import {
   faSpotify,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-import Dods from '../assets/images/dods.png';
 import { loadEpisodes } from '../actions/episodeActions';
 
 import ReactGa from 'react-ga';
@@ -109,7 +108,7 @@ class Podcast extends Component {
             style={{ marginBottom: '2em' }}
           >
             <img
-              src={Dods}
+              src="dods.png"
               alt="Dogs Of Dalal Street Logo"
               className="img-responsive col"
               style={{ maxWidth: 250, height: '100%' }}
