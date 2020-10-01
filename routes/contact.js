@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const rateLimit = require('express-rate-limit');
+
+const sendEmailLimiter = rateLimit({
+  windowMs: parseInt(process.env.EMAIL_RATE_LIMITER_WINDOW) * 1000,
+  max: parseInt(process.env.EMAIL_RATE_LIMITER_RATES),
+  message: 'Too many emails sent from this IP, please try again after an hour',
+});
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -11,7 +18,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post('/', (req, res) => {
+router.post('/', sendEmailLimiter, (req, res) => {
   const mailOptions = {
     from: req.body.from,
     to: process.env.PRIMARY_EMAIL,
