@@ -29,19 +29,12 @@ class Projects extends Component {
       <div className="container container-fluid">
         <div className="jumbotron text-center" style={{ marginTop: '2em' }}>
           <h1>Projects</h1>
-          <h4>
-            Collection of my{' '}
-            <span className="text-success">web development </span>(fullstack),{' '}
-            <span className="text-success">machine learning</span>, and other
-            projects.
-          </h4>
-          <h4>Click on a gif / picture to view it in a modal.</h4>
-          <h4>Click on a language/skill to add it to the search.</h4>
-          <h4>
-            Press enter in the search bar to add a search query to list of
-            queries.
-          </h4>
-          <h4>Click on a query to remove it from the list of queries.</h4>
+          <h5>
+            Click on a gif / picture to view it in a modal, click on a
+            language/skill to add it to the search, press enter in the search
+            bar to add a search query to list of queries, or click on a query to
+            remove it from the list of queries.
+          </h5>
           <p className="lead">
             Note: This page does not contain all my projects
           </p>
