@@ -294,8 +294,15 @@ export default class Home extends Component {
         </div>
         <div className="container-fluid">
           <div className="row justify-content-center">
-            <div className="col-xs-12 col-lg-5 bg-dark">
-              <h2 style={{ margin: 0, letterSpacing: 15, marginBottom: '1em' }}>
+            <div className="col-xs-12 col-lg-5 bg-secondary">
+              <h2
+                style={{
+                  margin: 0,
+                  letterSpacing: 15,
+                  marginBottom: '1em',
+                  paddingTop: 50,
+                }}
+              >
                 ROBOTICS
               </h2>
               <p style={{ fontSize: 20, marginBottom: '1em' }}>
@@ -381,6 +388,33 @@ export default class Home extends Component {
                 </Carousel.Item>
               </Carousel>
             </div>
+          </div>
+        </div>
+        <div
+          id="about"
+          className="bg-dark"
+          style={{ paddingTop: 100, paddingBottom: 100 }}
+        >
+          <div className="container">
+            <h2 style={{ margin: 0, letterSpacing: 4, marginBottom: '1em' }}>
+              HACKATHONS/
+              <br />
+              COMPETITIONS
+            </h2>
+            <p style={{ fontSize: 20 }}>
+              I frequently attend hackathons and other competitions in order to
+              put my software skills to use. I particularly enjoy coming up with
+              an idea and building it from scratch with others. The time crunch
+              of hackathons allows me to train the speed at which I am able to
+              produce, and has helped me to work better under pressure.
+            </p>
+            <p style={{ fontSize: 20, marginBottom: '1em' }}>
+              I also compete in the USACO (USA Computing Olympiad), and am
+              currently in the silver division. This programming competition
+              along with others such as the annual UTD battle of the brains
+              allow me to strengthen my data structures/algorithms skill and
+              practice my algorithmic problem solving skills.
+            </p>
           </div>
         </div>
       </div>
