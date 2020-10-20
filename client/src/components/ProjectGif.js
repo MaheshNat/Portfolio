@@ -29,10 +29,8 @@ const ProjectGif = (props) => {
               width: '100%',
               height: 'auto',
             }}
-            placeholderSrc="https://dummyimage.com/1200x631/303030/ffffff.png&text=Loading..."
             src={props.gifLink}
             alt="No demo gif"
-            effect="blur"
             onClick={() => {
               props.onClick();
               ReactGa.event({
@@ -107,7 +105,6 @@ const ProjectGif = (props) => {
         <Modal.Body>
           <div className="row justify-content-center">
             <LazyLoadImage
-              effect="blur"
               className="img-responsive col"
               src={props.gifLink}
               alt="No demo gif"
