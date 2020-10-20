@@ -205,6 +205,7 @@ class Projects extends Component {
                     description={project.description}
                     devpostLink={project.devpostLink}
                     githubLink={project.githubLink}
+                    videoLink={project.videoLink}
                     languages={project.languages}
                     title={project.title}
                     startDate={project.startDate}
@@ -218,6 +219,7 @@ class Projects extends Component {
                     demoLink={project.demoLink}
                     githubLink={project.githubLink}
                     devpostLink={project.devpostLink}
+                    videoLink={project.videoLink}
                     gifLink={project.gifLink}
                     onClick={() => {
                       this.props.showModal(project._id);

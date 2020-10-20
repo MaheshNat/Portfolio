@@ -3,7 +3,7 @@ import React from 'react';
 import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Project = (props) => {
@@ -57,6 +57,22 @@ const Project = (props) => {
             }}
           >
             <FontAwesomeIcon icon={faExternalLinkAlt} size="1x" />
+          </a>
+        )}
+        {props.videoLink && (
+          <a
+            href={props.videoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-link"
+            onClick={(e) => {
+              ReactGa.event({
+                category: 'Project',
+                action: `Clicked on ${props.title} video link.`,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faYoutube} size="1x" />
           </a>
         )}
         <p className="text-muted" style={{ fontSize: 20 }}>

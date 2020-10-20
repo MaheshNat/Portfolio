@@ -1,46 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Modal } from 'react-bootstrap';
 import ReactGa from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from 'react-lazy-load-image-component';
+import LoadingOverlay from 'react-loading-overlay';
 
 const ProjectGif = (props) => {
+  const [hover, setHover] = useState(false);
   return (
     <div>
-      <div className="row">
-        <OverlayTrigger
-          placement="bottom"
-          overlay={(props) => (
-            <Tooltip id="button-tooltip" {...props}>
-              Click to view project gif in modal
-            </Tooltip>
-          )}
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onClick={() => {
+          props.onClick();
+          ReactGa.event({
+            category: 'Project',
+            action: `Clicked on ${props.title} modal.`,
+          });
+        }}
+        style={{ cursor: 'pointer' }}
+      >
+        <LoadingOverlay
+          active={hover}
+          text="Click To View Gif In Modal"
+          fadeSpeed={200}
         >
           <LazyLoadImage
-            className="img-responsive col"
+            className="img-responsive"
             style={{
+              cursor: 'pointer',
               display: 'block',
               width: '100%',
               height: 'auto',
+              marginBottom: '2em',
             }}
             src={props.gifLink}
             alt="No demo gif"
-            onClick={() => {
-              props.onClick();
-              ReactGa.event({
-                category: 'Project',
-                action: `Clicked on ${props.title} modal.`,
-              });
-            }}
           />
-        </OverlayTrigger>
+        </LoadingOverlay>
       </div>
+
+      {props.videoLink && (
+        <LazyLoadComponent>
+          <div className="embed-responsive embed-responsive-16by9">
+            <iframe
+              allowFullScreen
+              className="embed-responsive-item"
+              frameBorder="0"
+              title="video"
+              src={props.videoLink}
+            />
+          </div>
+        </LazyLoadComponent>
+      )}
 
       <Modal
         size="xl"
@@ -69,20 +89,22 @@ const ProjectGif = (props) => {
                   <FontAwesomeIcon icon={faLink} />
                 </a>
               )}
-              <a
-                href={props.githubLink}
-                className="card-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  ReactGa.event({
-                    category: 'Project',
-                    action: `Clicked on ${props.title} github link (modal).`,
-                  });
-                }}
-              >
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
+              {props.githubLink && (
+                <a
+                  href={props.githubLink}
+                  className="card-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Project',
+                      action: `Clicked on ${props.title} github link (modal).`,
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              )}
               {props.devpostLink && (
                 <a
                   href={props.devpostLink}
@@ -97,6 +119,22 @@ const ProjectGif = (props) => {
                   }}
                 >
                   <FontAwesomeIcon icon={faExternalLinkAlt} size="1x" />
+                </a>
+              )}
+              {props.videoLink && (
+                <a
+                  href={props.videoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-link"
+                  onClick={(e) => {
+                    ReactGa.event({
+                      category: 'Project',
+                      action: `Clicked on ${props.title} video link (modal).`,
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon icon={faYoutube} size="1x" />
                 </a>
               )}
             </div>
