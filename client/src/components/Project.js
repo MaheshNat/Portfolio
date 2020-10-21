@@ -61,7 +61,11 @@ const Project = (props) => {
         )}
         {props.videoLink && (
           <a
-            href={props.videoLink}
+            href={
+              props.videoLink.substring(0, 23) +
+              '/watch?v=' +
+              props.videoLink.substring(30)
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="card-link"
