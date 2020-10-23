@@ -92,7 +92,7 @@ export default function Footer() {
           style={{ marginTop: 82 }}
         >
           <div className="col">
-            <p>Mahesh Natamai - 2020</p>
+            <p>Website Made By Mahesh Natamai</p>
           </div>
         </div>
       </div>
