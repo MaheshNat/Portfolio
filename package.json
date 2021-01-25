@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@octokit/rest": "^18.0.3",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "btoa": "^1.2.1",
     "cors": "^2.8.5",
     "cron": "^1.8.2",
